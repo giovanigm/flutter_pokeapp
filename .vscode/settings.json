@@ -1,0 +1,17 @@
+{
+  "files.exclude": {
+    "**/.dart_tool": true,
+    "**/.flutter-plugins": true,
+    "**/.flutter-plugins-dependencies": true,
+    "**/.idea": true,
+    "**/.packages": true,
+    "**/.vscode": true,
+    "**/*.freezed.dart": true,
+    "**/*.g.dart": true,
+    "**/*.gr.dart": true,
+    "**/*.iconfig.dart": true,
+    "**/android/": true,
+    "**/build/": true,
+    "**/ios/": true
+  }
+}
