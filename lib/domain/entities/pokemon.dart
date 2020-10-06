@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:pokeapp/domain/constants/pokemon_type.dart';
 
 part 'pokemon.freezed.dart';
 
@@ -12,5 +13,5 @@ abstract class Pokemon with _$Pokemon {
       int baseExperience,
       int height,
       int weight,
-      List<String> types}) = _Pokemon;
+      List<PokemonType> types}) = _Pokemon;
 }

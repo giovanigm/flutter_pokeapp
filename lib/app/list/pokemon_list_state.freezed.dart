@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'pokemon_list_state.dart';
 
@@ -9,9 +9,11 @@ part of 'pokemon_list_state.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$PokemonListStateTearOff {
   const _$PokemonListStateTearOff();
 
+// ignore: unused_element
   _PokemonListState call(
       {@required List<Pokemon> list, @required bool isLoading}) {
     return _PokemonListState(
@@ -21,9 +23,11 @@ class _$PokemonListStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PokemonListState = _$PokemonListStateTearOff();
 
+/// @nodoc
 mixin _$PokemonListState {
   List<Pokemon> get list;
   bool get isLoading;
@@ -31,6 +35,7 @@ mixin _$PokemonListState {
   $PokemonListStateCopyWith<PokemonListState> get copyWith;
 }
 
+/// @nodoc
 abstract class $PokemonListStateCopyWith<$Res> {
   factory $PokemonListStateCopyWith(
           PokemonListState value, $Res Function(PokemonListState) then) =
@@ -38,6 +43,7 @@ abstract class $PokemonListStateCopyWith<$Res> {
   $Res call({List<Pokemon> list, bool isLoading});
 }
 
+/// @nodoc
 class _$PokemonListStateCopyWithImpl<$Res>
     implements $PokemonListStateCopyWith<$Res> {
   _$PokemonListStateCopyWithImpl(this._value, this._then);
@@ -58,6 +64,7 @@ class _$PokemonListStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$PokemonListStateCopyWith<$Res>
     implements $PokemonListStateCopyWith<$Res> {
   factory _$PokemonListStateCopyWith(
@@ -67,6 +74,7 @@ abstract class _$PokemonListStateCopyWith<$Res>
   $Res call({List<Pokemon> list, bool isLoading});
 }
 
+/// @nodoc
 class __$PokemonListStateCopyWithImpl<$Res>
     extends _$PokemonListStateCopyWithImpl<$Res>
     implements _$PokemonListStateCopyWith<$Res> {
@@ -89,6 +97,7 @@ class __$PokemonListStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_PokemonListState implements _PokemonListState {
   const _$_PokemonListState({@required this.list, @required this.isLoading})
       : assert(list != null),

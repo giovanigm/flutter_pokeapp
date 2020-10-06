@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'pokemon.dart';
 
@@ -9,9 +9,11 @@ part of 'pokemon.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$PokemonTearOff {
   const _$PokemonTearOff();
 
+// ignore: unused_element
   _Pokemon call(
       {@required int id,
       @required String name,
@@ -19,7 +21,7 @@ class _$PokemonTearOff {
       int baseExperience,
       int height,
       int weight,
-      List<String> types}) {
+      List<PokemonType> types}) {
     return _Pokemon(
       id: id,
       name: name,
@@ -32,9 +34,11 @@ class _$PokemonTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $Pokemon = _$PokemonTearOff();
 
+/// @nodoc
 mixin _$Pokemon {
   int get id;
   String get name;
@@ -42,11 +46,12 @@ mixin _$Pokemon {
   int get baseExperience;
   int get height;
   int get weight;
-  List<String> get types;
+  List<PokemonType> get types;
 
   $PokemonCopyWith<Pokemon> get copyWith;
 }
 
+/// @nodoc
 abstract class $PokemonCopyWith<$Res> {
   factory $PokemonCopyWith(Pokemon value, $Res Function(Pokemon) then) =
       _$PokemonCopyWithImpl<$Res>;
@@ -57,9 +62,10 @@ abstract class $PokemonCopyWith<$Res> {
       int baseExperience,
       int height,
       int weight,
-      List<String> types});
+      List<PokemonType> types});
 }
 
+/// @nodoc
 class _$PokemonCopyWithImpl<$Res> implements $PokemonCopyWith<$Res> {
   _$PokemonCopyWithImpl(this._value, this._then);
 
@@ -86,11 +92,12 @@ class _$PokemonCopyWithImpl<$Res> implements $PokemonCopyWith<$Res> {
           : baseExperience as int,
       height: height == freezed ? _value.height : height as int,
       weight: weight == freezed ? _value.weight : weight as int,
-      types: types == freezed ? _value.types : types as List<String>,
+      types: types == freezed ? _value.types : types as List<PokemonType>,
     ));
   }
 }
 
+/// @nodoc
 abstract class _$PokemonCopyWith<$Res> implements $PokemonCopyWith<$Res> {
   factory _$PokemonCopyWith(_Pokemon value, $Res Function(_Pokemon) then) =
       __$PokemonCopyWithImpl<$Res>;
@@ -102,9 +109,10 @@ abstract class _$PokemonCopyWith<$Res> implements $PokemonCopyWith<$Res> {
       int baseExperience,
       int height,
       int weight,
-      List<String> types});
+      List<PokemonType> types});
 }
 
+/// @nodoc
 class __$PokemonCopyWithImpl<$Res> extends _$PokemonCopyWithImpl<$Res>
     implements _$PokemonCopyWith<$Res> {
   __$PokemonCopyWithImpl(_Pokemon _value, $Res Function(_Pokemon) _then)
@@ -132,11 +140,12 @@ class __$PokemonCopyWithImpl<$Res> extends _$PokemonCopyWithImpl<$Res>
           : baseExperience as int,
       height: height == freezed ? _value.height : height as int,
       weight: weight == freezed ? _value.weight : weight as int,
-      types: types == freezed ? _value.types : types as List<String>,
+      types: types == freezed ? _value.types : types as List<PokemonType>,
     ));
   }
 }
 
+/// @nodoc
 class _$_Pokemon with DiagnosticableTreeMixin implements _Pokemon {
   const _$_Pokemon(
       {@required this.id,
@@ -163,7 +172,7 @@ class _$_Pokemon with DiagnosticableTreeMixin implements _Pokemon {
   @override
   final int weight;
   @override
-  final List<String> types;
+  final List<PokemonType> types;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -230,7 +239,7 @@ abstract class _Pokemon implements Pokemon {
       int baseExperience,
       int height,
       int weight,
-      List<String> types}) = _$_Pokemon;
+      List<PokemonType> types}) = _$_Pokemon;
 
   @override
   int get id;
@@ -245,7 +254,7 @@ abstract class _Pokemon implements Pokemon {
   @override
   int get weight;
   @override
-  List<String> get types;
+  List<PokemonType> get types;
   @override
   _$PokemonCopyWith<_Pokemon> get copyWith;
 }

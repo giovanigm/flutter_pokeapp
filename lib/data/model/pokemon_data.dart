@@ -1,4 +1,5 @@
 import 'package:floor/floor.dart';
+import 'package:pokeapp/domain/constants/pokemon_type.dart';
 import 'package:pokeapp/domain/entities/pokemon.dart';
 
 @Entity(tableName: "Pokemons")
@@ -31,7 +32,10 @@ class PokemonData {
       baseExperience: baseExperience,
       height: height,
       weight: weight,
-      types: types.split(","));
+      types: types
+          .split(",")
+          .map((type) => PokemonTypeX.fromValue(type))
+          .toList());
 
   factory PokemonData.fromEntity(Pokemon entity) => PokemonData(
       id: entity.id,
@@ -40,5 +44,5 @@ class PokemonData {
       baseExperience: entity.baseExperience,
       height: entity.height,
       weight: entity.weight,
-      types: entity.types.join(","));
+      types: entity.types.map((type) => type.value).join(","));
 }

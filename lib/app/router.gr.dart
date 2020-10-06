@@ -4,12 +4,14 @@
 // AutoRouteGenerator
 // **************************************************************************
 
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: public_member_api_docs
+
 import 'package:auto_route/auto_route.dart';
-import 'package:pokeapp/app/list/pokemon_list_page.dart';
-import 'package:pokeapp/app/details/pokemon_details_page.dart';
-import 'package:pokeapp/domain/entities/pokemon.dart';
+import 'package:flutter/material.dart';
+
+import '../domain/entities/pokemon.dart';
+import 'details/pokemon_details_page.dart';
+import 'list/pokemon_list_page.dart';
 
 class Routes {
   static const String pokemonListPage = '/';
@@ -30,31 +32,36 @@ class Router extends RouterBase {
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, AutoRouteFactory>{
-    PokemonListPage: (RouteData data) {
+    PokemonListPage: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => PokemonListPage(),
         settings: data,
       );
     },
-    PokemonDetailsPage: (RouteData data) {
-      var args = data.getArgs<PokemonDetailsPageArguments>(
-          orElse: () => PokemonDetailsPageArguments());
+    PokemonDetailsPage: (data) {
+      final args = data.getArgs<PokemonDetailsPageArguments>(
+        orElse: () => PokemonDetailsPageArguments(),
+      );
       return MaterialPageRoute<dynamic>(
-        builder: (context) =>
-            PokemonDetailsPage(key: args.key, pokemon: args.pokemon),
+        builder: (context) => PokemonDetailsPage(
+          key: args.key,
+          pokemon: args.pokemon,
+          backgroundColor: args.backgroundColor,
+        ),
         settings: data,
       );
     },
   };
 }
 
-// *************************************************************************
-// Arguments holder classes
-// **************************************************************************
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
 
-//PokemonDetailsPage arguments holder class
+/// PokemonDetailsPage arguments holder class
 class PokemonDetailsPageArguments {
   final Key key;
   final Pokemon pokemon;
-  PokemonDetailsPageArguments({this.key, this.pokemon});
+  final Color backgroundColor;
+  PokemonDetailsPageArguments({this.key, this.pokemon, this.backgroundColor});
 }

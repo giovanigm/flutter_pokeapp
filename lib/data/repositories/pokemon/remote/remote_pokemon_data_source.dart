@@ -25,10 +25,8 @@ class RemotePokemonDataSourceImpl implements RemotePokemonDataSource {
       pokemon.baseExperience = infoResponse.baseExperience;
       pokemon.height = infoResponse.height;
       pokemon.weight = infoResponse.weight;
-      pokemon.types = infoResponse.types
-          .map((type) =>
-              type.type.name[0].toUpperCase() + type.type.name.substring(1))
-          .join(",");
+      pokemon.types =
+          infoResponse.types.map((data) => data.type.name).join(",");
     }
 
     return pokemonList;

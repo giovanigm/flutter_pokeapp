@@ -9,7 +9,7 @@ part of 'api.dart';
 class _ApiClient implements ApiClient {
   _ApiClient(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    this.baseUrl ??= 'https://pokeapi.co/api/v2/';
+    baseUrl ??= 'https://pokeapi.co/api/v2/';
   }
 
   final Dio _dio;
@@ -17,7 +17,7 @@ class _ApiClient implements ApiClient {
   String baseUrl;
 
   @override
-  getAllPokemons({limit, offset}) async {
+  Future<PokemonListResponse> getAllPokemons({limit, offset}) async {
     ArgumentError.checkNotNull(limit, 'limit');
     ArgumentError.checkNotNull(offset, 'offset');
     const _extra = <String, dynamic>{};
@@ -27,8 +27,7 @@ class _ApiClient implements ApiClient {
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
-    final Response<Map<String, dynamic>> _result = await _dio.request(
-        '/pokemon',
+    final _result = await _dio.request<Map<String, dynamic>>('/pokemon',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -41,13 +40,12 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  getPokemonInfo(id) async {
+  Future<PokemonInfoResponse> getPokemonInfo(id) async {
     ArgumentError.checkNotNull(id, 'id');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final Response<Map<String, dynamic>> _result = await _dio.request(
-        '/pokemon/$id',
+    final _result = await _dio.request<Map<String, dynamic>>('/pokemon/$id',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
