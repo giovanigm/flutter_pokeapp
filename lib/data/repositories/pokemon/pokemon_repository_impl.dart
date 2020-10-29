@@ -1,13 +1,13 @@
 import 'package:injectable/injectable.dart';
-import 'package:pokeapp/data/repositories/pokemon/local/local_pokemon_data_source.dart';
-import 'package:pokeapp/data/repositories/pokemon/remote/remote_pokemon_data_source.dart';
+import 'package:pokeapp/data/repositories/pokemon/pokemon_local_data_source.dart';
+import 'package:pokeapp/data/repositories/pokemon/pokemon_remote_data_source.dart';
 import 'package:pokeapp/domain/entities/pokemon.dart';
 import 'package:pokeapp/domain/repositories/pokemon_repository.dart';
 
 @LazySingleton(as: PokemonRepository)
 class PokemonRepositoryImpl implements PokemonRepository {
-  final LocalPokemonDataSource _localDataSource;
-  final RemotePokemonDataSource _remoteDataSource;
+  final PokemonLocalDataSource _localDataSource;
+  final PokemonRemoteDataSource _remoteDataSource;
 
   PokemonRepositoryImpl(this._localDataSource, this._remoteDataSource);
 

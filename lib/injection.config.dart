@@ -12,12 +12,12 @@ import 'data/api/api.dart';
 import 'data/db/database.dart';
 import 'data/di/data_module.dart';
 import 'domain/usecases/get_all_pokemons.dart';
-import 'data/repositories/pokemon/local/local_pokemon_data_source.dart';
 import 'data/db/pokemon_dao.dart';
 import 'app/list/pokemon_list_view_model.dart';
+import 'data/repositories/pokemon/pokemon_local_data_source.dart';
+import 'data/repositories/pokemon/pokemon_remote_data_source.dart';
 import 'domain/repositories/pokemon_repository.dart';
 import 'data/repositories/pokemon/pokemon_repository_impl.dart';
-import 'data/repositories/pokemon/remote/remote_pokemon_data_source.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -34,12 +34,12 @@ Future<GetIt> $initGetIt(
   gh.lazySingleton<AppDatabase>(() => appDatabase);
   gh.lazySingleton<Dio>(() => databaseModule.dio);
   gh.lazySingleton<PokemonDao>(() => databaseModule.pokemonDao);
-  gh.lazySingleton<RemotePokemonDataSource>(
-      () => RemotePokemonDataSourceImpl(get<ApiClient>()));
-  gh.lazySingleton<LocalPokemonDataSource>(
-      () => LocalPokemonDataSourceImpl(get<PokemonDao>()));
+  gh.lazySingleton<PokemonLocalDataSource>(
+      () => PokemonLocalDataSourceImpl(get<PokemonDao>()));
+  gh.lazySingleton<PokemonRemoteDataSource>(
+      () => PokemonRemoteDataSourceImpl(get<ApiClient>()));
   gh.lazySingleton<PokemonRepository>(() => PokemonRepositoryImpl(
-      get<LocalPokemonDataSource>(), get<RemotePokemonDataSource>()));
+      get<PokemonLocalDataSource>(), get<PokemonRemoteDataSource>()));
   gh.factory<GetAllPokemons>(() => GetAllPokemons(get<PokemonRepository>()));
 
   // Eager singletons must be registered in the right order

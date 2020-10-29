@@ -2,15 +2,15 @@ import 'package:injectable/injectable.dart';
 import 'package:pokeapp/data/api/api.dart';
 import 'package:pokeapp/data/model/pokemon_data.dart';
 
-abstract class RemotePokemonDataSource {
+abstract class PokemonRemoteDataSource {
   Future<List<PokemonData>> getAllPokemons({int limit = 20, int offset});
 }
 
-@LazySingleton(as: RemotePokemonDataSource)
-class RemotePokemonDataSourceImpl implements RemotePokemonDataSource {
+@LazySingleton(as: PokemonRemoteDataSource)
+class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
   final ApiClient _apiClient;
 
-  RemotePokemonDataSourceImpl(this._apiClient);
+  PokemonRemoteDataSourceImpl(this._apiClient);
 
   @override
   Future<List<PokemonData>> getAllPokemons({int limit = 20, int offset}) async {
