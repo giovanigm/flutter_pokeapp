@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'pokemon_list_state.dart';
 
@@ -9,13 +9,15 @@ part of 'pokemon_list_state.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$PokemonListStateTearOff {
   const _$PokemonListStateTearOff();
 
-// ignore: unused_element
   _PokemonListState call(
-      {@required List<Pokemon> list, @required bool isLoading}) {
+      {required List<Pokemon> list, required bool isLoading}) {
     return _PokemonListState(
       list: list,
       isLoading: isLoading,
@@ -24,15 +26,16 @@ class _$PokemonListStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $PokemonListState = _$PokemonListStateTearOff();
 
 /// @nodoc
 mixin _$PokemonListState {
-  List<Pokemon> get list;
-  bool get isLoading;
+  List<Pokemon> get list => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
 
-  $PokemonListStateCopyWith<PokemonListState> get copyWith;
+  @JsonKey(ignore: true)
+  $PokemonListStateCopyWith<PokemonListState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -54,12 +57,18 @@ class _$PokemonListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object list = freezed,
-    Object isLoading = freezed,
+    Object? list = freezed,
+    Object? isLoading = freezed,
   }) {
     return _then(_value.copyWith(
-      list: list == freezed ? _value.list : list as List<Pokemon>,
-      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      list: list == freezed
+          ? _value.list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<Pokemon>,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -87,21 +96,25 @@ class __$PokemonListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object list = freezed,
-    Object isLoading = freezed,
+    Object? list = freezed,
+    Object? isLoading = freezed,
   }) {
     return _then(_PokemonListState(
-      list: list == freezed ? _value.list : list as List<Pokemon>,
-      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      list: list == freezed
+          ? _value.list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<Pokemon>,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 class _$_PokemonListState implements _PokemonListState {
-  const _$_PokemonListState({@required this.list, @required this.isLoading})
-      : assert(list != null),
-        assert(isLoading != null);
+  const _$_PokemonListState({required this.list, required this.isLoading});
 
   @override
   final List<Pokemon> list;
@@ -130,6 +143,7 @@ class _$_PokemonListState implements _PokemonListState {
       const DeepCollectionEquality().hash(list) ^
       const DeepCollectionEquality().hash(isLoading);
 
+  @JsonKey(ignore: true)
   @override
   _$PokemonListStateCopyWith<_PokemonListState> get copyWith =>
       __$PokemonListStateCopyWithImpl<_PokemonListState>(this, _$identity);
@@ -137,13 +151,15 @@ class _$_PokemonListState implements _PokemonListState {
 
 abstract class _PokemonListState implements PokemonListState {
   const factory _PokemonListState(
-      {@required List<Pokemon> list,
-      @required bool isLoading}) = _$_PokemonListState;
+      {required List<Pokemon> list,
+      required bool isLoading}) = _$_PokemonListState;
 
   @override
-  List<Pokemon> get list;
+  List<Pokemon> get list => throw _privateConstructorUsedError;
   @override
-  bool get isLoading;
+  bool get isLoading => throw _privateConstructorUsedError;
   @override
-  _$PokemonListStateCopyWith<_PokemonListState> get copyWith;
+  @JsonKey(ignore: true)
+  _$PokemonListStateCopyWith<_PokemonListState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -1,13 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:pokeapp/domain/entities/pokemon.dart';
+
+import '../../domain/entities/pokemon.dart';
 
 class PokemonDetailsPage extends StatelessWidget {
   final Pokemon pokemon;
   final Color backgroundColor;
 
-  const PokemonDetailsPage({Key key, this.pokemon, this.backgroundColor})
-      : super(key: key);
+  const PokemonDetailsPage({
+    required this.pokemon,
+    required this.backgroundColor,
+  });
 
   @override
   Widget build(BuildContext context) {

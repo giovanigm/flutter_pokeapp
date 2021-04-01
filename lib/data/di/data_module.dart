@@ -1,9 +1,10 @@
-import 'package:injectable/injectable.dart';
-import 'package:pokeapp/data/api/api.dart';
-import 'package:pokeapp/data/db/database.dart';
-import 'package:pokeapp/data/db/pokemon_dao.dart';
-import 'package:pokeapp/injection.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
+
+import '../../injection.dart';
+import '../api/api.dart';
+import '../db/database.dart';
+import '../db/pokemon_dao.dart';
 
 @module
 abstract class DatabaseModule {

@@ -1,8 +1,9 @@
 import 'package:injectable/injectable.dart';
-import 'package:pokeapp/data/repositories/pokemon/pokemon_local_data_source.dart';
-import 'package:pokeapp/data/repositories/pokemon/pokemon_remote_data_source.dart';
-import 'package:pokeapp/domain/entities/pokemon.dart';
-import 'package:pokeapp/domain/repositories/pokemon_repository.dart';
+
+import '../../../domain/entities/pokemon.dart';
+import '../../../domain/repositories/pokemon_repository.dart';
+import 'pokemon_local_data_source.dart';
+import 'pokemon_remote_data_source.dart';
 
 @LazySingleton(as: PokemonRepository)
 class PokemonRepositoryImpl implements PokemonRepository {
@@ -12,7 +13,7 @@ class PokemonRepositoryImpl implements PokemonRepository {
   PokemonRepositoryImpl(this._localDataSource, this._remoteDataSource);
 
   @override
-  Future<List<Pokemon>> getAllPokemons({int lastId}) async {
+  Future<List<Pokemon>> getAllPokemons({int? lastId}) async {
     int offset = lastId ?? 0;
     final databaseList = await _localDataSource.getAllPokemons(offset: offset);
     if (databaseList.isEmpty) {

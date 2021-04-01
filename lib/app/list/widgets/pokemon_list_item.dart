@@ -2,19 +2,23 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pokeapp/app/list/widgets/pokemon_type_text.dart';
-import 'package:pokeapp/app/router.gr.dart';
-import 'package:pokeapp/domain/constants/pokemon_type.dart';
-import 'package:pokeapp/domain/entities/pokemon.dart';
+
+import '../../../domain/constants/pokemon_type.dart';
+import '../../../domain/entities/pokemon.dart';
+import '../../router.gr.dart';
+import 'pokemon_type_text.dart';
 
 class PokemonListItem extends StatelessWidget {
   final Pokemon pokemon;
 
-  const PokemonListItem({Key key, this.pokemon}) : super(key: key);
+  const PokemonListItem({
+    required Key key,
+    required this.pokemon,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColor = pokemon.types.first.color;
+    final backgroundColor = pokemon.primaryType?.color ?? Colors.black;
     return Hero(
       tag: "card-${pokemon.id}",
       child: Card(
@@ -26,13 +30,14 @@ class PokemonListItem extends StatelessWidget {
         ),
         child: InkWell(
           onTap: () {
-            ExtendedNavigator.root.push(Routes.pokemonDetailsPage,
-                arguments: PokemonDetailsPageArguments(
-                    pokemon: pokemon, backgroundColor: backgroundColor));
+            AutoRouter.of(context).navigate(PokemonDetailsPageRoute(
+              pokemon: pokemon,
+              backgroundColor: backgroundColor,
+            ));
           },
           child: Stack(children: <Widget>[
             Positioned(
-              left: 25,
+              left: 85,
               top: 20,
               child: Container(
                 height: 150,
@@ -70,9 +75,9 @@ class PokemonListItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  PokemonTypeText(pokemon.types.first.name),
-                  if (pokemon.types.length == 2)
-                    PokemonTypeText(pokemon.types[1].name),
+                  PokemonTypeText(pokemon.primaryType?.name ?? ""),
+                  if (pokemon.secondaryType != null)
+                    PokemonTypeText(pokemon.secondaryType?.name ?? ""),
                 ],
               ),
             ),

@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:pokeapp/app/list/pokemon_list_state.dart';
-import 'package:pokeapp/domain/usecases/get_all_pokemons.dart';
+
+import '../../domain/usecases/get_all_pokemons.dart';
+import 'pokemon_list_state.dart';
 
 @singleton
 class PokemonListCubit extends Cubit<PokemonListState> {

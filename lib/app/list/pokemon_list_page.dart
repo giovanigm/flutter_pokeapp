@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokeapp/app/base/cubit_page.dart';
-import 'package:pokeapp/app/list/pokemon_list_state.dart';
-import 'package:pokeapp/app/list/pokemon_list_view_model.dart';
-import 'package:pokeapp/app/list/widgets/pokemon_list_item.dart';
+
+import '../base/cubit_page.dart';
+import 'pokemon_list_cubit.dart';
+import 'pokemon_list_state.dart';
+import 'widgets/pokemon_list_item.dart';
 
 class PokemonListPage extends CubitPage<PokemonListCubit> {
   final ScrollController _scrollController = ScrollController();

@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart' hide Router;
 
 import 'router.gr.dart';
@@ -6,9 +5,11 @@ import 'router.gr.dart';
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final _appRouter = Router();
+    return MaterialApp.router(
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser: _appRouter.defaultRouteParser(),
         title: 'PokeApp',
-        builder: ExtendedNavigator<Router>(router: Router()),
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             brightness: Brightness.light,

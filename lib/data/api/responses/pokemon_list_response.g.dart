@@ -9,12 +9,11 @@ part of 'pokemon_list_response.dart';
 PokemonListResponse _$PokemonListResponseFromJson(Map<String, dynamic> json) {
   return PokemonListResponse(
     json['count'] as int,
-    json['next'] as String,
-    json['previous'] as String,
-    (json['results'] as List)
-        ?.map((e) =>
-            e == null ? null : PokemonItem.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    json['next'] as String?,
+    json['previous'] as String?,
+    (json['results'] as List<dynamic>)
+        .map((e) => PokemonItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 

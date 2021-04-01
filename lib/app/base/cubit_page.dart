@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokeapp/injection.dart';
+
+import '../../injection.dart';
 
 abstract class CubitPage<CUBIT extends Cubit> extends StatefulWidget {
   Widget build(BuildContext context);

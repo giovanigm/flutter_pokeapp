@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class PokemonTypeText extends StatelessWidget {
   final String text;
 
-  const PokemonTypeText(this.text, {Key key}) : super(key: key);
+  const PokemonTypeText(this.text);
 
   @override
   Widget build(BuildContext context) {

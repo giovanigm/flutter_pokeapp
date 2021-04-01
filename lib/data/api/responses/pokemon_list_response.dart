@@ -1,13 +1,14 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:pokeapp/data/model/pokemon_data.dart';
+
+import '../../model/pokemon_data.dart';
 
 part 'pokemon_list_response.g.dart';
 
 @JsonSerializable()
 class PokemonListResponse {
   final int count;
-  final String next;
-  final String previous;
+  final String? next;
+  final String? previous;
   final List<PokemonItem> results;
 
   PokemonListResponse(this.count, this.next, this.previous, this.results);
@@ -22,7 +23,7 @@ class PokemonItem {
   final String name;
   final String url;
 
-  PokemonItem({this.name, this.url});
+  PokemonItem({required this.name, required this.url});
 
   PokemonData toPokemonData() {
     var values = url.split("/");
@@ -30,9 +31,15 @@ class PokemonItem {
     int id = int.parse(values.last);
 
     return PokemonData(
-        id: id,
-        name: name[0].toUpperCase() + name.substring(1),
-        imageUrl: "https://pokeres.bastionbot.org/images/pokemon/$id.png");
+      id: id,
+      name: name[0].toUpperCase() + name.substring(1),
+      imageUrl: "https://pokeres.bastionbot.org/images/pokemon/$id.png",
+      baseExperience: null,
+      height: null,
+      weight: null,
+      primaryType: null,
+      secondaryType: null,
+    );
   }
 
   factory PokemonItem.fromJson(Map<String, dynamic> json) =>

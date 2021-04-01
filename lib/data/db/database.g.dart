@@ -22,11 +22,11 @@ class $FloorAppDatabase {
 class _$AppDatabaseBuilder {
   _$AppDatabaseBuilder(this.name);
 
-  final String name;
+  final String? name;
 
   final List<Migration> _migrations = [];
 
-  Callback _callback;
+  Callback? _callback;
 
   /// Adds migrations to the builder.
   _$AppDatabaseBuilder addMigrations(List<Migration> migrations) {
@@ -43,7 +43,7 @@ class _$AppDatabaseBuilder {
   /// Creates the database and initializes it.
   Future<AppDatabase> build() async {
     final path = name != null
-        ? await sqfliteDatabaseFactory.getDatabasePath(name)
+        ? await sqfliteDatabaseFactory.getDatabasePath(name!)
         : ':memory:';
     final database = _$AppDatabase();
     database.database = await database.open(
@@ -56,14 +56,14 @@ class _$AppDatabaseBuilder {
 }
 
 class _$AppDatabase extends AppDatabase {
-  _$AppDatabase([StreamController<String> listener]) {
+  _$AppDatabase([StreamController<String>? listener]) {
     changeListener = listener ?? StreamController<String>.broadcast();
   }
 
-  PokemonDao _pokemonDaoInstance;
+  PokemonDao? _pokemonDaoInstance;
 
   Future<sqflite.Database> open(String path, List<Migration> migrations,
-      [Callback callback]) async {
+      [Callback? callback]) async {
     final databaseOptions = sqflite.OpenDatabaseOptions(
       version: 1,
       onConfigure: (database) async {
@@ -80,7 +80,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Pokemons` (`id` INTEGER, `name` TEXT, `imageUrl` TEXT, `baseExperience` INTEGER, `height` INTEGER, `weight` INTEGER, `types` TEXT, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Pokemons` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `image_url` TEXT NOT NULL, `base_experience` INTEGER, `height` INTEGER, `weight` INTEGER, `primary_type` TEXT, `secondary_type` TEXT, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -100,14 +100,17 @@ class _$PokemonDao extends PokemonDao {
         _pokemonDataInsertionAdapter = InsertionAdapter(
             database,
             'Pokemons',
-            (PokemonData item) => <String, dynamic>{
+            (PokemonData item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
-                  'imageUrl': item.imageUrl,
-                  'baseExperience': item.baseExperience,
+                  'image_url': item.imageUrl,
+                  'base_experience': item.baseExperience,
                   'height': item.height,
                   'weight': item.weight,
-                  'types': item.types
+                  'primary_type':
+                      _nullablePokemonTypeConverter.encode(item.primaryType),
+                  'secondary_type':
+                      _nullablePokemonTypeConverter.encode(item.secondaryType)
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -116,21 +119,23 @@ class _$PokemonDao extends PokemonDao {
 
   final QueryAdapter _queryAdapter;
 
-  static final _pokemonsMapper = (Map<String, dynamic> row) => PokemonData(
-      id: row['id'] as int,
-      name: row['name'] as String,
-      imageUrl: row['imageUrl'] as String,
-      baseExperience: row['baseExperience'] as int,
-      height: row['height'] as int,
-      weight: row['weight'] as int,
-      types: row['types'] as String);
-
   final InsertionAdapter<PokemonData> _pokemonDataInsertionAdapter;
 
   @override
   Future<List<PokemonData>> getAllPokemons(int limit, int offset) async {
-    return _queryAdapter.queryList('SELECT * FROM Pokemons LIMIT ? OFFSET ?',
-        arguments: <dynamic>[limit, offset], mapper: _pokemonsMapper);
+    return _queryAdapter.queryList('SELECT * FROM Pokemons LIMIT ?1 OFFSET ?2',
+        mapper: (Map<String, Object?> row) => PokemonData(
+            id: row['id'] as int,
+            name: row['name'] as String,
+            imageUrl: row['image_url'] as String,
+            baseExperience: row['base_experience'] as int?,
+            height: row['height'] as int?,
+            weight: row['weight'] as int?,
+            primaryType: _nullablePokemonTypeConverter
+                .decode(row['primary_type'] as String?),
+            secondaryType: _nullablePokemonTypeConverter
+                .decode(row['secondary_type'] as String?)),
+        arguments: [limit, offset]);
   }
 
   @override
@@ -139,3 +144,7 @@ class _$PokemonDao extends PokemonDao {
         pokemons, OnConflictStrategy.replace);
   }
 }
+
+// ignore_for_file: unused_element
+final _pokemonTypeConverter = PokemonTypeConverter();
+final _nullablePokemonTypeConverter = NullablePokemonTypeConverter();

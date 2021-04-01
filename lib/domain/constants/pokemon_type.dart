@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' show Color, Colors;
-import 'package:pokeapp/common/string_extensions.dart';
+
+import '../../common/string_extensions.dart';
 
 enum PokemonType {
   bug,
@@ -19,7 +20,8 @@ enum PokemonType {
   psychic,
   rock,
   steel,
-  water
+  water,
+  undefined,
 }
 
 extension PokemonTypeX on PokemonType {
@@ -93,6 +95,6 @@ extension PokemonTypeX on PokemonType {
     for (final PokemonType type in PokemonType.values) {
       if (value == type.value) return type;
     }
-    return null;
+    return PokemonType.undefined;
   }
 }

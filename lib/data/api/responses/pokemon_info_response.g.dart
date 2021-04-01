@@ -12,10 +12,9 @@ PokemonInfoResponse _$PokemonInfoResponseFromJson(Map<String, dynamic> json) {
     json['base_experience'] as int,
     json['height'] as int,
     json['weight'] as int,
-    (json['types'] as List)
-        ?.map((e) =>
-            e == null ? null : TypeData.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    (json['types'] as List<dynamic>)
+        .map((e) => TypeData.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
@@ -31,9 +30,7 @@ Map<String, dynamic> _$PokemonInfoResponseToJson(
 
 TypeData _$TypeDataFromJson(Map<String, dynamic> json) {
   return TypeData(
-    json['type'] == null
-        ? null
-        : InnerTypeData.fromJson(json['type'] as Map<String, dynamic>),
+    InnerTypeData.fromJson(json['type'] as Map<String, dynamic>),
   );
 }
 

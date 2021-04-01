@@ -1,5 +1,6 @@
 import 'package:floor/floor.dart';
-import 'package:pokeapp/data/model/pokemon_data.dart';
+
+import '../model/pokemon_data.dart';
 
 @dao
 abstract class PokemonDao {

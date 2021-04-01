@@ -1,9 +1,10 @@
 import 'package:injectable/injectable.dart';
-import 'package:pokeapp/data/db/pokemon_dao.dart';
-import 'package:pokeapp/data/model/pokemon_data.dart';
+
+import '../../db/pokemon_dao.dart';
+import '../../model/pokemon_data.dart';
 
 abstract class PokemonLocalDataSource {
-  Future<List<PokemonData>> getAllPokemons({int limit = 20, int offset});
+  Future<List<PokemonData>> getAllPokemons({int limit = 20, int offset = 0});
   Future<void> insertAll(List<PokemonData> pokemons);
 }
 
@@ -14,7 +15,7 @@ class PokemonLocalDataSourceImpl implements PokemonLocalDataSource {
   PokemonLocalDataSourceImpl(this._dao);
 
   @override
-  Future<List<PokemonData>> getAllPokemons({int limit = 20, int offset}) =>
+  Future<List<PokemonData>> getAllPokemons({int limit = 20, int offset = 0}) =>
       _dao.getAllPokemons(limit, offset);
 
   @override
