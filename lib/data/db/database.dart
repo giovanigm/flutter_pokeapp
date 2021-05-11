@@ -17,5 +17,5 @@ part 'database.g.dart';
 abstract class AppDatabase extends FloorDatabase {
   PokemonDao get pokemonDao;
 
-  static const DATABASE_NAME = "app_database.db";
+  static const databaseName = "app_database.db";
 }

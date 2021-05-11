@@ -31,13 +31,11 @@ class PokemonDetailsPage extends StatelessWidget {
                       elevation: 0,
                       backgroundColor: backgroundColor,
                       expandedHeight: 300.0,
-                      floating: false,
                       pinned: true,
                       flexibleSpace: FlexibleSpaceBar(
                           centerTitle: true,
-                          collapseMode: CollapseMode.parallax,
                           title: Text(pokemon.name,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold)),
@@ -55,7 +53,7 @@ class PokemonDetailsPage extends StatelessWidget {
                           unselectedLabelColor: Colors.grey,
                           indicatorColor: Colors.blue[800],
                           indicatorSize: TabBarIndicatorSize.label,
-                          tabs: [
+                          tabs: const [
                             Tab(text: "About"),
                             Tab(text: "Base Stats"),
                             Tab(text: "Evolution"),
@@ -69,7 +67,7 @@ class PokemonDetailsPage extends StatelessWidget {
                 },
                 body: Container(
                   color: Colors.white,
-                  child: TabBarView(children: <Widget>[
+                  child: const TabBarView(children: <Widget>[
                     Center(
                       child: Text("About"),
                     ),
@@ -107,7 +105,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(25), topRight: Radius.circular(25)),

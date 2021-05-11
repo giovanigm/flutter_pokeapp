@@ -3,9 +3,10 @@ import 'package:flutter/material.dart' hide Router;
 import 'router.gr.dart';
 
 class App extends StatelessWidget {
+  final _appRouter = Router();
+
   @override
   Widget build(BuildContext context) {
-    final _appRouter = Router();
     return MaterialApp.router(
         routerDelegate: _appRouter.delegate(),
         routeInformationParser: _appRouter.defaultRouteParser(),

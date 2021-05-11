@@ -26,9 +26,9 @@ class PokemonItem {
   PokemonItem({required this.name, required this.url});
 
   PokemonData toPokemonData() {
-    var values = url.split("/");
+    final values = url.split("/");
     values.removeLast();
-    int id = int.parse(values.last);
+    final int id = int.parse(values.last);
 
     return PokemonData(
       id: id,

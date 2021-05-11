@@ -11,7 +11,7 @@ abstract class DatabaseModule {
   @preResolve
   @lazySingleton
   Future<AppDatabase> get database =>
-      $FloorAppDatabase.databaseBuilder(AppDatabase.DATABASE_NAME).build();
+      $FloorAppDatabase.databaseBuilder(AppDatabase.databaseName).build();
 
   @lazySingleton
   PokemonDao get pokemonDao => getIt<AppDatabase>().pokemonDao;

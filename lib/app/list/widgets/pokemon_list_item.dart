@@ -12,7 +12,7 @@ class PokemonListItem extends StatelessWidget {
   final Pokemon pokemon;
 
   const PokemonListItem({
-    required Key key,
+    Key? key,
     required this.pokemon,
   }) : super(key: key);
 
@@ -23,7 +23,6 @@ class PokemonListItem extends StatelessWidget {
       tag: "card-${pokemon.id}",
       child: Card(
         color: backgroundColor,
-        semanticContainer: true,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -39,11 +38,11 @@ class PokemonListItem extends StatelessWidget {
             Positioned(
               left: 85,
               top: 20,
-              child: Container(
+              child: SizedBox(
                 height: 150,
                 child: SvgPicture.asset(
                   "assets/pokeball.svg",
-                  color: Color(0x26FFFFFF),
+                  color: const Color(0x26FFFFFF),
                 ),
               ),
             ),
@@ -52,7 +51,7 @@ class PokemonListItem extends StatelessWidget {
               left: 10,
               child: Text(
                 pokemon.name,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 20,
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
@@ -63,7 +62,7 @@ class PokemonListItem extends StatelessWidget {
               left: 130,
               child: Text(
                 "#${pokemon.id.toString().padLeft(3, '0')}",
-                style: TextStyle(
+                style: const TextStyle(
                     color: Color(0x26000000),
                     fontSize: 20,
                     fontWeight: FontWeight.bold),

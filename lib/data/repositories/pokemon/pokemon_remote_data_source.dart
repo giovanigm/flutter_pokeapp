@@ -17,14 +17,14 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
   @override
   Future<List<PokemonData>> getAllPokemons(
       {int limit = 20, int offset = 0}) async {
-    var listResponse =
+    final listResponse =
         await _apiClient.getAllPokemons(limit: limit, offset: offset);
 
-    var pokemonList =
+    final pokemonList =
         listResponse.results.map((item) => item.toPokemonData()).toList();
 
-    for (var pokemon in pokemonList) {
-      var infoResponse = await _apiClient.getPokemonInfo(pokemon.id);
+    for (final pokemon in pokemonList) {
+      final infoResponse = await _apiClient.getPokemonInfo(pokemon.id);
       pokemon.baseExperience = infoResponse.baseExperience;
       pokemon.height = infoResponse.height;
       pokemon.weight = infoResponse.weight;

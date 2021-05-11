@@ -10,14 +10,14 @@ class PokemonTypeText extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 5),
       padding: const EdgeInsets.only(left: 15, right: 15, top: 2, bottom: 2),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0x4DFFFFFF),
         borderRadius: BorderRadius.all(Radius.circular(50)),
       ),
       child: Center(
         child: Text(
           text,
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
         ),
       ),
     );

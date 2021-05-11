@@ -14,7 +14,7 @@ class PokemonRepositoryImpl implements PokemonRepository {
 
   @override
   Future<List<Pokemon>> getAllPokemons({int? lastId}) async {
-    int offset = lastId ?? 0;
+    final int offset = lastId ?? 0;
     final databaseList = await _localDataSource.getAllPokemons(offset: offset);
     if (databaseList.isEmpty) {
       final pokemonList =
