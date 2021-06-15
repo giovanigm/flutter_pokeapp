@@ -16,41 +16,37 @@ class PokemonListPage extends StatelessWidget {
       body: BlocProvider<PokemonListCubit>(
         create: (_) => getIt<PokemonListCubit>()..loadList(),
         child: BlocBuilder<PokemonListCubit, PokemonListState>(
-          builder: (context, state) =>
-              NotificationListener<OverscrollIndicatorNotification>(
-            onNotification: (overscroll) {
-              overscroll.disallowGlow();
-              return true;
-            },
-            child: SingleChildScrollView(
-              child: SizedBox(
-                child: Column(
-                  children: <Widget>[
-                    GridView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2, childAspectRatio: 1.5),
-                        itemCount: state.list.length + 1,
-                        itemBuilder: (context, index) {
-                          if (index >= state.list.length) {
-                            context.read<PokemonListCubit>().loadList();
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          }
+          builder: (context, state) => CustomScrollView(
+            slivers: [
+              SliverGrid(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.5,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    if (index >= state.list.length - 1) {
+                      context.read<PokemonListCubit>().loadList();
+                    }
 
-                          final pokemon = state.list[index];
+                    final pokemon = state.list[index];
 
-                          return PokemonListItem(
-                            pokemon: pokemon,
-                          );
-                        }),
-                  ],
+                    return PokemonListItem(
+                      pokemon: pokemon,
+                    );
+                  },
+                  childCount: state.list.length,
                 ),
               ),
-            ),
+              if (state.isLoading)
+                const SliverToBoxAdapter(
+                    child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ))
+            ],
           ),
         ),
       ),

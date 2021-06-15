@@ -12,12 +12,9 @@ class PokemonListCubit extends Cubit<PokemonListState> {
       : super(const PokemonListState(list: [], isLoading: true));
 
   Future<void> loadList() async {
-    if (!state.isLoading) {
-      emit(state.copyWith(isLoading: true));
-    }
     final list = [...state.list];
     final newList = await _getAllPokemons(lastId: list.length);
     list.addAll(newList);
-    emit(state.copyWith(list: list, isLoading: false));
+    emit(state.copyWith(list: list, isLoading: newList.isNotEmpty));
   }
 }
