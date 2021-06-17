@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -24,9 +26,11 @@ class PokemonDetailsPage extends StatelessWidget {
             child: Container(
               color: Colors.transparent,
               child: NestedScrollView(
-                headerSliverBuilder:
-                    (BuildContext context, bool innerBoxIsScrolled) {
-                  return <Widget>[
+                headerSliverBuilder: (
+                  BuildContext context,
+                  bool innerBoxIsScrolled,
+                ) {
+                  return [
                     SliverAppBar(
                       elevation: 0,
                       backgroundColor: backgroundColor,
@@ -65,22 +69,28 @@ class PokemonDetailsPage extends StatelessWidget {
                     ),
                   ];
                 },
-                body: Container(
-                  color: Colors.white,
-                  child: const TabBarView(children: <Widget>[
-                    Center(
-                      child: Text("About"),
+                body: ClipRect(
+                  clipper: _TabBarClipper(
+                      clipHeight: MediaQuery.of(context).size.height - 100),
+                  child: Container(
+                    color: Colors.white,
+                    child: const TabBarView(
+                      children: <Widget>[
+                        Center(
+                          child: Text("About"),
+                        ),
+                        Center(
+                          child: Text("Base stats"),
+                        ),
+                        Center(
+                          child: Text("Evolution"),
+                        ),
+                        Center(
+                          child: Text("Moves"),
+                        ),
+                      ],
                     ),
-                    Center(
-                      child: Text("Base stats"),
-                    ),
-                    Center(
-                      child: Text("Evolution"),
-                    ),
-                    Center(
-                      child: Text("Moves"),
-                    ),
-                  ]),
+                  ),
                 ),
               ),
             ),
@@ -88,6 +98,24 @@ class PokemonDetailsPage extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class _TabBarClipper extends CustomClipper<Rect> {
+  final double clipHeight;
+
+  _TabBarClipper({required this.clipHeight});
+
+  @override
+  Rect getClip(Size size) {
+    final double top = max(size.height - clipHeight, 0);
+    final rect = Rect.fromLTRB(0.0, top, size.width, size.height);
+    return rect;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper oldClipper) {
+    return false;
   }
 }
 

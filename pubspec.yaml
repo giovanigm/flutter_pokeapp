@@ -40,3 +40,17 @@ flutter:
 
   assets:
     - assets/
+
+  fonts:
+    - family: CircularStd
+      fonts:
+        - asset: assets/fonts/CircularStd-Book.ttf
+
+        - asset: assets/fonts/CircularStd-Medium.ttf
+          weight: 600
+
+        - asset: assets/fonts/CircularStd-Black.ttf
+          weight: 700
+
+        - asset: assets/fonts/CircularStd-Bold.ttf
+          weight: 900

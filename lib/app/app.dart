@@ -13,8 +13,10 @@ class App extends StatelessWidget {
         title: 'PokeApp',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            brightness: Brightness.light,
-            primaryColor: Colors.red,
-            accentColor: Colors.red));
+          fontFamily: "CircularStd",
+          brightness: Brightness.light,
+          primaryColor: Colors.red,
+          accentColor: Colors.red,
+        ));
   }
 }
