@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/app/core/extensions/pokemon_type_extensions.dart';
 import 'package:pokeapp/app/details/pokemon_details_cubit.dart';
+import 'package:pokeapp/app/details/pokemon_details_state.dart';
 import 'package:pokeapp/app/details/widgets/pokemon_info.dart';
 import 'package:pokeapp/app/details/widgets/pokemon_page_view.dart';
 import 'package:pokeapp/injection.dart';
@@ -91,6 +92,8 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage>
           Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
+              title: BlocBuilder<PokemonDetailsCubit, PokemonDetailsState>(
+                  builder: (context, state) => Text(state.pokemon!.name)),
               backgroundColor: Colors.transparent,
               elevation: 0,
             ),
@@ -127,12 +130,12 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage>
           boxShadow: null,
           color: Colors.transparent,
           onPanelSlide: (position) => _sliderController.value = position,
-          panelBuilder: (sc) => PokemonInfo(
-            sliderController: _sliderController,
-            scrollController: sc,
-          ),
+          panel: child,
         );
       },
+      child: PokemonInfo(
+        sliderController: _sliderController,
+      ),
     );
   }
 }

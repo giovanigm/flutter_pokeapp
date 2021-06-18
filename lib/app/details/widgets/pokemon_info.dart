@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 
 class PokemonInfo extends StatelessWidget {
   final AnimationController sliderController;
-  final ScrollController scrollController;
 
   const PokemonInfo({
     Key? key,
     required this.sliderController,
-    required this.scrollController,
   }) : super(key: key);
 
   @override
