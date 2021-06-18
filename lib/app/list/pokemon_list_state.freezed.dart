@@ -113,8 +113,9 @@ class __$PokemonListStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_PokemonListState implements _PokemonListState {
-  const _$_PokemonListState({required this.list, required this.isLoading});
+class _$_PokemonListState extends _PokemonListState {
+  const _$_PokemonListState({required this.list, required this.isLoading})
+      : super._();
 
   @override
   final List<Pokemon> list;
@@ -149,10 +150,11 @@ class _$_PokemonListState implements _PokemonListState {
       __$PokemonListStateCopyWithImpl<_PokemonListState>(this, _$identity);
 }
 
-abstract class _PokemonListState implements PokemonListState {
+abstract class _PokemonListState extends PokemonListState {
   const factory _PokemonListState(
       {required List<Pokemon> list,
       required bool isLoading}) = _$_PokemonListState;
+  const _PokemonListState._() : super._();
 
   @override
   List<Pokemon> get list => throw _privateConstructorUsedError;

@@ -10,4 +10,11 @@ class PokemonListState with _$PokemonListState {
     required List<Pokemon> list,
     required bool isLoading,
   }) = _PokemonListState;
+
+  const PokemonListState._();
+
+  factory PokemonListState.initial() => const PokemonListState(
+        list: [],
+        isLoading: true,
+      );
 }

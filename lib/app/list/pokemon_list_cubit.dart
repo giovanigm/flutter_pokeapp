@@ -8,8 +8,7 @@ import 'pokemon_list_state.dart';
 class PokemonListCubit extends Cubit<PokemonListState> {
   final GetAllPokemons _getAllPokemons;
 
-  PokemonListCubit(this._getAllPokemons)
-      : super(const PokemonListState(list: [], isLoading: true));
+  PokemonListCubit(this._getAllPokemons) : super(PokemonListState.initial());
 
   Future<void> loadList() async {
     final list = [...state.list];
