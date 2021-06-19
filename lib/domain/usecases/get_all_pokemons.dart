@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:pokeapp/domain/core/result.dart';
 
 import '../entities/pokemon.dart';
 import '../repositories/pokemon_repository.dart';
@@ -9,6 +10,5 @@ class GetAllPokemons {
 
   GetAllPokemons(this._repository);
 
-  Future<List<Pokemon>> call({int? lastId}) =>
-      _repository.getAllPokemons(lastId: lastId);
+  Future<Result<List<Pokemon>>> call() => _repository.getAllPokemons();
 }

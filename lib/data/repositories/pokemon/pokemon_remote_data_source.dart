@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
+import 'package:pokeapp/data/api/requests/get_all_pokemon_request.dart';
 
-import '../../../domain/constants/pokemon_type.dart';
 import '../../api/api.dart';
 import '../../model/pokemon_data.dart';
 
@@ -18,25 +18,10 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
   Future<List<PokemonData>> getAllPokemons(
       {int limit = 20, int offset = 0}) async {
     final listResponse =
-        await _apiClient.getAllPokemons(limit: limit, offset: offset);
+        await _apiClient.getAllPokemons(GetAllPokemonRequest());
 
     final pokemonList =
-        listResponse.results.map((item) => item.toPokemonData()).toList();
-
-    for (final pokemon in pokemonList) {
-      final infoResponse = await _apiClient.getPokemonInfo(pokemon.id);
-      pokemon.baseExperience = infoResponse.baseExperience;
-      pokemon.height = infoResponse.height;
-      pokemon.weight = infoResponse.weight;
-
-      final types = infoResponse.types;
-
-      pokemon.primaryType = PokemonTypeX.fromValue(types.first.type.name);
-
-      if (types.length >= 2) {
-        pokemon.secondaryType = PokemonTypeX.fromValue(types[1].type.name);
-      }
-    }
+        listResponse.data.pokemon.map((item) => item.toPokemonData()).toList();
 
     return pokemonList;
   }

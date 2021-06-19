@@ -11,10 +11,10 @@ class Pokemon with _$Pokemon {
     required int id,
     required String name,
     required String imageUrl,
-    required PokemonType? primaryType,
+    required PokemonType primaryType,
     PokemonType? secondaryType,
-    int? baseExperience,
-    int? height,
-    int? weight,
+    required int baseExperience,
+    required int height,
+    required int weight,
   }) = _Pokemon;
 }

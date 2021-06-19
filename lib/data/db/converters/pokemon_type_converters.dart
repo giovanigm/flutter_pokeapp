@@ -14,8 +14,10 @@ class PokemonTypeConverter extends TypeConverter<PokemonType, String> {
 class NullablePokemonTypeConverter
     extends TypeConverter<PokemonType?, String?> {
   @override
-  PokemonType decode(String? databasePokemonType) =>
-      PokemonTypeX.fromValue(databasePokemonType ?? "");
+  PokemonType? decode(String? databasePokemonType) =>
+      databasePokemonType != null
+          ? PokemonTypeX.fromValue(databasePokemonType)
+          : null;
 
   @override
   String? encode(PokemonType? pokemonType) => pokemonType?.value;

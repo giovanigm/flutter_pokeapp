@@ -20,11 +20,11 @@ class _$PokemonTearOff {
       {required int id,
       required String name,
       required String imageUrl,
-      required PokemonType? primaryType,
+      required PokemonType primaryType,
       PokemonType? secondaryType,
-      int? baseExperience,
-      int? height,
-      int? weight}) {
+      required int baseExperience,
+      required int height,
+      required int weight}) {
     return _Pokemon(
       id: id,
       name: name,
@@ -46,11 +46,11 @@ mixin _$Pokemon {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
-  PokemonType? get primaryType => throw _privateConstructorUsedError;
+  PokemonType get primaryType => throw _privateConstructorUsedError;
   PokemonType? get secondaryType => throw _privateConstructorUsedError;
-  int? get baseExperience => throw _privateConstructorUsedError;
-  int? get height => throw _privateConstructorUsedError;
-  int? get weight => throw _privateConstructorUsedError;
+  int get baseExperience => throw _privateConstructorUsedError;
+  int get height => throw _privateConstructorUsedError;
+  int get weight => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PokemonCopyWith<Pokemon> get copyWith => throw _privateConstructorUsedError;
@@ -64,11 +64,11 @@ abstract class $PokemonCopyWith<$Res> {
       {int id,
       String name,
       String imageUrl,
-      PokemonType? primaryType,
+      PokemonType primaryType,
       PokemonType? secondaryType,
-      int? baseExperience,
-      int? height,
-      int? weight});
+      int baseExperience,
+      int height,
+      int weight});
 }
 
 /// @nodoc
@@ -106,7 +106,7 @@ class _$PokemonCopyWithImpl<$Res> implements $PokemonCopyWith<$Res> {
       primaryType: primaryType == freezed
           ? _value.primaryType
           : primaryType // ignore: cast_nullable_to_non_nullable
-              as PokemonType?,
+              as PokemonType,
       secondaryType: secondaryType == freezed
           ? _value.secondaryType
           : secondaryType // ignore: cast_nullable_to_non_nullable
@@ -114,15 +114,15 @@ class _$PokemonCopyWithImpl<$Res> implements $PokemonCopyWith<$Res> {
       baseExperience: baseExperience == freezed
           ? _value.baseExperience
           : baseExperience // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       height: height == freezed
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       weight: weight == freezed
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
     ));
   }
 }
@@ -136,11 +136,11 @@ abstract class _$PokemonCopyWith<$Res> implements $PokemonCopyWith<$Res> {
       {int id,
       String name,
       String imageUrl,
-      PokemonType? primaryType,
+      PokemonType primaryType,
       PokemonType? secondaryType,
-      int? baseExperience,
-      int? height,
-      int? weight});
+      int baseExperience,
+      int height,
+      int weight});
 }
 
 /// @nodoc
@@ -179,7 +179,7 @@ class __$PokemonCopyWithImpl<$Res> extends _$PokemonCopyWithImpl<$Res>
       primaryType: primaryType == freezed
           ? _value.primaryType
           : primaryType // ignore: cast_nullable_to_non_nullable
-              as PokemonType?,
+              as PokemonType,
       secondaryType: secondaryType == freezed
           ? _value.secondaryType
           : secondaryType // ignore: cast_nullable_to_non_nullable
@@ -187,15 +187,15 @@ class __$PokemonCopyWithImpl<$Res> extends _$PokemonCopyWithImpl<$Res>
       baseExperience: baseExperience == freezed
           ? _value.baseExperience
           : baseExperience // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       height: height == freezed
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       weight: weight == freezed
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
     ));
   }
 }
@@ -208,9 +208,9 @@ class _$_Pokemon with DiagnosticableTreeMixin implements _Pokemon {
       required this.imageUrl,
       required this.primaryType,
       this.secondaryType,
-      this.baseExperience,
-      this.height,
-      this.weight});
+      required this.baseExperience,
+      required this.height,
+      required this.weight});
 
   @override
   final int id;
@@ -219,15 +219,15 @@ class _$_Pokemon with DiagnosticableTreeMixin implements _Pokemon {
   @override
   final String imageUrl;
   @override
-  final PokemonType? primaryType;
+  final PokemonType primaryType;
   @override
   final PokemonType? secondaryType;
   @override
-  final int? baseExperience;
+  final int baseExperience;
   @override
-  final int? height;
+  final int height;
   @override
-  final int? weight;
+  final int weight;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -298,11 +298,11 @@ abstract class _Pokemon implements Pokemon {
       {required int id,
       required String name,
       required String imageUrl,
-      required PokemonType? primaryType,
+      required PokemonType primaryType,
       PokemonType? secondaryType,
-      int? baseExperience,
-      int? height,
-      int? weight}) = _$_Pokemon;
+      required int baseExperience,
+      required int height,
+      required int weight}) = _$_Pokemon;
 
   @override
   int get id => throw _privateConstructorUsedError;
@@ -311,15 +311,15 @@ abstract class _Pokemon implements Pokemon {
   @override
   String get imageUrl => throw _privateConstructorUsedError;
   @override
-  PokemonType? get primaryType => throw _privateConstructorUsedError;
+  PokemonType get primaryType => throw _privateConstructorUsedError;
   @override
   PokemonType? get secondaryType => throw _privateConstructorUsedError;
   @override
-  int? get baseExperience => throw _privateConstructorUsedError;
+  int get baseExperience => throw _privateConstructorUsedError;
   @override
-  int? get height => throw _privateConstructorUsedError;
+  int get height => throw _privateConstructorUsedError;
   @override
-  int? get weight => throw _privateConstructorUsedError;
+  int get weight => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PokemonCopyWith<_Pokemon> get copyWith =>

@@ -14,14 +14,14 @@ class PokemonData {
   final String imageUrl;
 
   @ColumnInfo(name: "base_experience")
-  int? baseExperience;
+  int baseExperience;
 
-  int? height;
+  int height;
 
-  int? weight;
+  int weight;
 
   @ColumnInfo(name: "primary_type")
-  PokemonType? primaryType;
+  PokemonType primaryType;
 
   @ColumnInfo(name: "secondary_type")
   PokemonType? secondaryType;

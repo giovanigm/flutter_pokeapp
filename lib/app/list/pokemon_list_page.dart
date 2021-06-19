@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pokeapp/app/widgets/main_app_bar.dart';
 import 'widgets/pokemon_list.dart';
 
 class PokemonListPage extends StatelessWidget {
@@ -31,7 +32,10 @@ class PokemonListPage extends StatelessWidget {
               color: Colors.black.withOpacity(0.05),
             ),
           ),
-          const PokemonList(),
+          NestedScrollView(
+            headerSliverBuilder: (context, _) => [MainSliverAppBar()],
+            body: const PokemonList(),
+          ),
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/app/core/extensions/pokemon_type_extensions.dart';
+import 'package:pokeapp/app/core/fade_page_route.dart';
 import 'package:pokeapp/app/details/pokemon_details_cubit.dart';
 import 'package:pokeapp/app/details/pokemon_details_state.dart';
 import 'package:pokeapp/app/details/widgets/pokemon_info.dart';
@@ -17,10 +18,8 @@ class PokemonDetailsPage extends StatefulWidget {
     required this.pokemon,
   });
 
-  static MaterialPageRoute route({required Pokemon pokemon}) =>
-      MaterialPageRoute(
-        builder: (context) => PokemonDetailsPage(pokemon: pokemon),
-      );
+  static FadePageRoute route({required Pokemon pokemon}) =>
+      FadePageRoute(page: PokemonDetailsPage(pokemon: pokemon));
 
   @override
   _PokemonDetailsPageState createState() => _PokemonDetailsPageState();
@@ -150,7 +149,7 @@ class _Background extends StatelessWidget {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       constraints: const BoxConstraints.expand(),
-      color: currentPokemon?.primaryType?.color,
+      color: currentPokemon?.primaryType.color,
     );
   }
 }

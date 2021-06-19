@@ -9,6 +9,7 @@ class PokemonListState with _$PokemonListState {
   const factory PokemonListState({
     required List<Pokemon> list,
     required bool isLoading,
+    String? errorMessage,
   }) = _PokemonListState;
 
   const PokemonListState._();

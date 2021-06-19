@@ -1,5 +1,7 @@
+import 'package:pokeapp/domain/core/result.dart';
+
 import '../entities/pokemon.dart';
 
 abstract class PokemonRepository {
-  Future<List<Pokemon>> getAllPokemons({int? lastId});
+  Future<Result<List<Pokemon>>> getAllPokemons();
 }

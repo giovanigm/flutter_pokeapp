@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:pokeapp/domain/core/result.dart';
 
 import '../../../domain/entities/pokemon.dart';
 import '../../../domain/repositories/pokemon_repository.dart';
@@ -13,18 +15,30 @@ class PokemonRepositoryImpl implements PokemonRepository {
   PokemonRepositoryImpl(this._localDataSource, this._remoteDataSource);
 
   @override
-  Future<List<Pokemon>> getAllPokemons({int? lastId}) async {
-    final int offset = lastId ?? 0;
-    final databaseList = await _localDataSource.getAllPokemons(offset: offset);
-    if (databaseList.isEmpty) {
-      final pokemonList =
-          await _remoteDataSource.getAllPokemons(offset: offset);
+  Future<Result<List<Pokemon>>> getAllPokemons() async {
+    try {
+      final databaseList = await _localDataSource.getAllPokemons();
+      if (databaseList.isEmpty) {
+        final pokemonList = await _remoteDataSource.getAllPokemons();
 
-      await _localDataSource.insertAll(pokemonList);
+        _localDataSource.insertAll(pokemonList);
 
-      return pokemonList.map((data) => data.toEntity()).toList();
-    } else {
-      return databaseList.map((data) => data.toEntity()).toList();
+        final entities = pokemonList.map((data) => data.toEntity()).toList();
+
+        return Result.success(value: entities);
+      } else {
+        final entities = databaseList.map((data) => data.toEntity()).toList();
+
+        return Result.success(value: entities);
+      }
+    } catch (error) {
+      switch (error.runtimeType) {
+        case DioError:
+          // final res = (error as DioError).response;
+          break;
+        default:
+      }
+      return const Result.error();
     }
   }
 }

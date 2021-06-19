@@ -80,7 +80,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Pokemons` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `image_url` TEXT NOT NULL, `base_experience` INTEGER, `height` INTEGER, `weight` INTEGER, `primary_type` TEXT, `secondary_type` TEXT, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Pokemons` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `image_url` TEXT NOT NULL, `base_experience` INTEGER NOT NULL, `height` INTEGER NOT NULL, `weight` INTEGER NOT NULL, `primary_type` TEXT NOT NULL, `secondary_type` TEXT, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -108,7 +108,7 @@ class _$PokemonDao extends PokemonDao {
                   'height': item.height,
                   'weight': item.weight,
                   'primary_type':
-                      _nullablePokemonTypeConverter.encode(item.primaryType),
+                      _pokemonTypeConverter.encode(item.primaryType),
                   'secondary_type':
                       _nullablePokemonTypeConverter.encode(item.secondaryType)
                 });
@@ -122,20 +122,19 @@ class _$PokemonDao extends PokemonDao {
   final InsertionAdapter<PokemonData> _pokemonDataInsertionAdapter;
 
   @override
-  Future<List<PokemonData>> getAllPokemons(int limit, int offset) async {
-    return _queryAdapter.queryList('SELECT * FROM Pokemons LIMIT ?1 OFFSET ?2',
+  Future<List<PokemonData>> getAllPokemons() async {
+    return _queryAdapter.queryList('SELECT * FROM Pokemons',
         mapper: (Map<String, Object?> row) => PokemonData(
             id: row['id'] as int,
             name: row['name'] as String,
             imageUrl: row['image_url'] as String,
-            baseExperience: row['base_experience'] as int?,
-            height: row['height'] as int?,
-            weight: row['weight'] as int?,
-            primaryType: _nullablePokemonTypeConverter
-                .decode(row['primary_type'] as String?),
+            baseExperience: row['base_experience'] as int,
+            height: row['height'] as int,
+            weight: row['weight'] as int,
+            primaryType:
+                _pokemonTypeConverter.decode(row['primary_type'] as String),
             secondaryType: _nullablePokemonTypeConverter
-                .decode(row['secondary_type'] as String?)),
-        arguments: [limit, offset]);
+                .decode(row['secondary_type'] as String?)));
   }
 
   @override

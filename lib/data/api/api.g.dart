@@ -8,7 +8,7 @@ part of 'api.dart';
 
 class _ApiClient implements ApiClient {
   _ApiClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://pokeapi.co/api/v2/';
+    baseUrl ??= 'https://beta.pokeapi.co/graphql/v1beta';
   }
 
   final Dio _dio;
@@ -16,36 +16,18 @@ class _ApiClient implements ApiClient {
   String? baseUrl;
 
   @override
-  Future<PokemonListResponse> getAllPokemons(
-      {required limit, required offset}) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'limit': limit,
-      r'offset': offset
-    };
-    final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<PokemonListResponse>(
-            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/pokemon',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = PokemonListResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<PokemonInfoResponse> getPokemonInfo(id) async {
+  Future<PokemonListResponse> getAllPokemons(request) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<PokemonInfoResponse>(
-            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/pokemon/$id',
+        _setStreamType<PokemonListResponse>(
+            Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
+                .compose(_dio.options, '/',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = PokemonInfoResponse.fromJson(_result.data!);
+    final value = PokemonListResponse.fromJson(_result.data!);
     return value;
   }
 

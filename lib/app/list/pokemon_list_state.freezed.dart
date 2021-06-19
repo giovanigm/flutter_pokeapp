@@ -17,10 +17,13 @@ class _$PokemonListStateTearOff {
   const _$PokemonListStateTearOff();
 
   _PokemonListState call(
-      {required List<Pokemon> list, required bool isLoading}) {
+      {required List<Pokemon> list,
+      required bool isLoading,
+      String? errorMessage}) {
     return _PokemonListState(
       list: list,
       isLoading: isLoading,
+      errorMessage: errorMessage,
     );
   }
 }
@@ -32,6 +35,7 @@ const $PokemonListState = _$PokemonListStateTearOff();
 mixin _$PokemonListState {
   List<Pokemon> get list => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PokemonListStateCopyWith<PokemonListState> get copyWith =>
@@ -43,7 +47,7 @@ abstract class $PokemonListStateCopyWith<$Res> {
   factory $PokemonListStateCopyWith(
           PokemonListState value, $Res Function(PokemonListState) then) =
       _$PokemonListStateCopyWithImpl<$Res>;
-  $Res call({List<Pokemon> list, bool isLoading});
+  $Res call({List<Pokemon> list, bool isLoading, String? errorMessage});
 }
 
 /// @nodoc
@@ -59,6 +63,7 @@ class _$PokemonListStateCopyWithImpl<$Res>
   $Res call({
     Object? list = freezed,
     Object? isLoading = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       list: list == freezed
@@ -69,6 +74,10 @@ class _$PokemonListStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorMessage: errorMessage == freezed
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -80,7 +89,7 @@ abstract class _$PokemonListStateCopyWith<$Res>
           _PokemonListState value, $Res Function(_PokemonListState) then) =
       __$PokemonListStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<Pokemon> list, bool isLoading});
+  $Res call({List<Pokemon> list, bool isLoading, String? errorMessage});
 }
 
 /// @nodoc
@@ -98,6 +107,7 @@ class __$PokemonListStateCopyWithImpl<$Res>
   $Res call({
     Object? list = freezed,
     Object? isLoading = freezed,
+    Object? errorMessage = freezed,
   }) {
     return _then(_PokemonListState(
       list: list == freezed
@@ -108,23 +118,30 @@ class __$PokemonListStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorMessage: errorMessage == freezed
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 class _$_PokemonListState extends _PokemonListState {
-  const _$_PokemonListState({required this.list, required this.isLoading})
+  const _$_PokemonListState(
+      {required this.list, required this.isLoading, this.errorMessage})
       : super._();
 
   @override
   final List<Pokemon> list;
   @override
   final bool isLoading;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'PokemonListState(list: $list, isLoading: $isLoading)';
+    return 'PokemonListState(list: $list, isLoading: $isLoading, errorMessage: $errorMessage)';
   }
 
   @override
@@ -135,14 +152,18 @@ class _$_PokemonListState extends _PokemonListState {
                 const DeepCollectionEquality().equals(other.list, list)) &&
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
-                    .equals(other.isLoading, isLoading)));
+                    .equals(other.isLoading, isLoading)) &&
+            (identical(other.errorMessage, errorMessage) ||
+                const DeepCollectionEquality()
+                    .equals(other.errorMessage, errorMessage)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(list) ^
-      const DeepCollectionEquality().hash(isLoading);
+      const DeepCollectionEquality().hash(isLoading) ^
+      const DeepCollectionEquality().hash(errorMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -153,13 +174,16 @@ class _$_PokemonListState extends _PokemonListState {
 abstract class _PokemonListState extends PokemonListState {
   const factory _PokemonListState(
       {required List<Pokemon> list,
-      required bool isLoading}) = _$_PokemonListState;
+      required bool isLoading,
+      String? errorMessage}) = _$_PokemonListState;
   const _PokemonListState._() : super._();
 
   @override
   List<Pokemon> get list => throw _privateConstructorUsedError;
   @override
   bool get isLoading => throw _privateConstructorUsedError;
+  @override
+  String? get errorMessage => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PokemonListStateCopyWith<_PokemonListState> get copyWith =>

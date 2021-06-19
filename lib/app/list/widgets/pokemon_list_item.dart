@@ -16,9 +16,12 @@ class PokemonListItem extends StatelessWidget {
     required this.pokemon,
   }) : super(key: key);
 
+  // static const double _pokeballFraction = 0.75;
+  // static const double _pokemonFraction = 0.76;
+
   @override
   Widget build(BuildContext context) {
-    final backgroundColor = pokemon.primaryType?.color ?? Colors.black;
+    final backgroundColor = pokemon.primaryType.color;
     return Card(
       color: backgroundColor,
       clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -71,7 +74,7 @@ class PokemonListItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                PokemonTypeText(pokemon.primaryType?.name ?? ""),
+                PokemonTypeText(pokemon.primaryType.name),
                 if (pokemon.secondaryType != null)
                   PokemonTypeText(pokemon.secondaryType?.name ?? ""),
               ],

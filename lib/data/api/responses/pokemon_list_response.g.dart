@@ -8,33 +8,77 @@ part of 'pokemon_list_response.dart';
 
 PokemonListResponse _$PokemonListResponseFromJson(Map<String, dynamic> json) {
   return PokemonListResponse(
-    json['count'] as int,
-    json['next'] as String?,
-    json['previous'] as String?,
-    (json['results'] as List<dynamic>)
-        .map((e) => PokemonItem.fromJson(e as Map<String, dynamic>))
-        .toList(),
+    _Data.fromJson(json['data'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$PokemonListResponseToJson(
         PokemonListResponse instance) =>
     <String, dynamic>{
-      'count': instance.count,
-      'next': instance.next,
-      'previous': instance.previous,
-      'results': instance.results,
+      'data': instance.data,
     };
 
-PokemonItem _$PokemonItemFromJson(Map<String, dynamic> json) {
-  return PokemonItem(
-    name: json['name'] as String,
-    url: json['url'] as String,
+_Data _$_DataFromJson(Map<String, dynamic> json) {
+  return _Data(
+    (json['pokemon'] as List<dynamic>)
+        .map((e) => _PokemonItem.fromJson(e as Map<String, dynamic>))
+        .toList(),
   );
 }
 
-Map<String, dynamic> _$PokemonItemToJson(PokemonItem instance) =>
+Map<String, dynamic> _$_DataToJson(_Data instance) => <String, dynamic>{
+      'pokemon': instance.pokemon,
+    };
+
+_PokemonItem _$_PokemonItemFromJson(Map<String, dynamic> json) {
+  return _PokemonItem(
+    json['id'] as int,
+    json['height'] as int,
+    json['weight'] as int,
+    json['base_experience'] as int,
+    _Species.fromJson(json['species'] as Map<String, dynamic>),
+    (json['types'] as List<dynamic>)
+        .map((e) => _Type.fromJson(e as Map<String, dynamic>))
+        .toList(),
+  );
+}
+
+Map<String, dynamic> _$_PokemonItemToJson(_PokemonItem instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'height': instance.height,
+      'weight': instance.weight,
+      'base_experience': instance.baseExperience,
+      'species': instance.species,
+      'types': instance.types,
+    };
+
+_Species _$_SpeciesFromJson(Map<String, dynamic> json) {
+  return _Species(
+    json['name'] as String,
+  );
+}
+
+Map<String, dynamic> _$_SpeciesToJson(_Species instance) => <String, dynamic>{
       'name': instance.name,
-      'url': instance.url,
+    };
+
+_Type _$_TypeFromJson(Map<String, dynamic> json) {
+  return _Type(
+    _TypeName.fromJson(json['type'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$_TypeToJson(_Type instance) => <String, dynamic>{
+      'type': instance.type,
+    };
+
+_TypeName _$_TypeNameFromJson(Map<String, dynamic> json) {
+  return _TypeName(
+    json['name'] as String,
+  );
+}
+
+Map<String, dynamic> _$_TypeNameToJson(_TypeName instance) => <String, dynamic>{
+      'name': instance.name,
     };

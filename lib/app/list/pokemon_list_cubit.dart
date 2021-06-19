@@ -11,9 +11,27 @@ class PokemonListCubit extends Cubit<PokemonListState> {
   PokemonListCubit(this._getAllPokemons) : super(PokemonListState.initial());
 
   Future<void> loadList() async {
-    final list = [...state.list];
-    final newList = await _getAllPokemons(lastId: list.length);
-    list.addAll(newList);
-    emit(state.copyWith(list: list, isLoading: newList.isNotEmpty));
+    if (!state.isLoading) {
+      emit(state.copyWith(
+        isLoading: true,
+        errorMessage: null,
+      ));
+    }
+    final result = await _getAllPokemons();
+
+    result.when(
+      success: (pokemonList) {
+        emit(state.copyWith(
+          list: pokemonList ?? [],
+          isLoading: false,
+        ));
+      },
+      error: (_) {
+        emit(state.copyWith(
+          errorMessage: "It was not possible to fetch the pokemon list\n:(",
+          isLoading: false,
+        ));
+      },
+    );
   }
 }
