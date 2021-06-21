@@ -6,7 +6,7 @@ class GetAllPokemonRequest extends Request {
           operationName: "getAllPokemon",
           query: """
           query getAllPokemon {
-            pokemon: pokemon_v2_pokemon(order_by: {id: asc}) {
+            pokemon: pokemon_v2_pokemon(order_by: {id: asc}, where: {id: {_lt: 10000}}) {
               base_experience
               height
               id
