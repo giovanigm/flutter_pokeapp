@@ -201,7 +201,7 @@ class __$PokemonCopyWithImpl<$Res> extends _$PokemonCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_Pokemon with DiagnosticableTreeMixin implements _Pokemon {
+class _$_Pokemon extends _Pokemon with DiagnosticableTreeMixin {
   const _$_Pokemon(
       {required this.id,
       required this.name,
@@ -210,7 +210,8 @@ class _$_Pokemon with DiagnosticableTreeMixin implements _Pokemon {
       this.secondaryType,
       required this.baseExperience,
       required this.height,
-      required this.weight});
+      required this.weight})
+      : super._();
 
   @override
   final int id;
@@ -293,7 +294,7 @@ class _$_Pokemon with DiagnosticableTreeMixin implements _Pokemon {
       __$PokemonCopyWithImpl<_Pokemon>(this, _$identity);
 }
 
-abstract class _Pokemon implements Pokemon {
+abstract class _Pokemon extends Pokemon {
   const factory _Pokemon(
       {required int id,
       required String name,
@@ -303,6 +304,7 @@ abstract class _Pokemon implements Pokemon {
       required int baseExperience,
       required int height,
       required int weight}) = _$_Pokemon;
+  const _Pokemon._() : super._();
 
   @override
   int get id => throw _privateConstructorUsedError;

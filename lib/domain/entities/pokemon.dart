@@ -17,4 +17,8 @@ class Pokemon with _$Pokemon {
     required int height,
     required int weight,
   }) = _Pokemon;
+
+  const Pokemon._();
+
+  String get number => "#${id.toString().padLeft(3, '0')}";
 }

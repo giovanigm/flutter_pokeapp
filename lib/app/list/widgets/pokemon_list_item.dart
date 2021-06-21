@@ -17,82 +17,137 @@ class PokemonListItem extends StatelessWidget {
     required this.pokemon,
   }) : super(key: key);
 
-  // static const double _pokeballFraction = 0.75;
-  // static const double _pokemonFraction = 0.76;
-
   @override
   Widget build(BuildContext context) {
     final backgroundColor = pokemon.primaryType.color;
-    return Card(
-      color: backgroundColor,
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15.0),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final cardHeight = constraints.maxHeight;
+        final cardWidth = constraints.maxWidth;
+        return Card(
+          color: backgroundColor,
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          child: InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                PokemonDetailsPage.route(pokemon: pokemon),
+              );
+            },
+            child: Stack(children: <Widget>[
+              _PokeballDecoration(parentHeight: cardHeight),
+              _PokemonImage(
+                pokemonImageUrl: pokemon.imageUrl,
+                parentHeight: cardHeight,
+              ),
+              Positioned(
+                top: cardHeight * 0.14,
+                left: cardWidth * 0.05,
+                child: Text(
+                  pokemon.name,
+                  style: TextStyle(
+                      fontSize: cardWidth * 0.09,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Positioned(
+                top: cardHeight * 0.1,
+                right: cardWidth * 0.05,
+                child: Text(
+                  pokemon.number,
+                  style: TextStyle(
+                    fontSize: cardWidth * 0.1,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black12,
+                  ),
+                ),
+              ),
+              Positioned(
+                top: cardHeight * 0.4,
+                left: cardWidth * 0.05,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    PokemonTypeText(
+                      pokemon.primaryType.name,
+                      fontSize: cardWidth * 0.06,
+                    ),
+                    if (pokemon.secondaryType != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5.0),
+                        child: PokemonTypeText(
+                          pokemon.secondaryType?.name ?? "",
+                          fontSize: cardWidth * 0.06,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ]),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _PokemonImage extends StatelessWidget {
+  static const double _pokemonFraction = 0.7;
+
+  final String pokemonImageUrl;
+  final double parentHeight;
+
+  const _PokemonImage({
+    Key? key,
+    required this.pokemonImageUrl,
+    required this.parentHeight,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final size = parentHeight * _pokemonFraction;
+
+    return Positioned(
+      bottom: -2,
+      right: 2,
+      child: Hero(
+        tag: pokemonImageUrl,
+        child: CachedNetworkImage(
+          width: size,
+          height: size,
+          imageUrl: pokemonImageUrl,
+          errorWidget: (_, __, error) => const Icon(Icons.error),
+        ),
       ),
-      child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(
-            PokemonDetailsPage.route(pokemon: pokemon),
-          );
-        },
-        child: Stack(children: <Widget>[
-          Positioned(
-            left: 85,
-            top: 20,
-            child: SizedBox(
-              height: 150,
-              child: SvgPicture.asset(
-                AppImages.pokeball.assetName,
-                color: const Color(0x26FFFFFF),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 20,
-            left: 10,
-            child: Text(
-              pokemon.name,
-              style: const TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-          Positioned(
-            top: 10,
-            left: 130,
-            child: Text(
-              "#${pokemon.id.toString().padLeft(3, '0')}",
-              style: const TextStyle(
-                  color: Color(0x26000000),
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-          Positioned(
-            top: 60,
-            left: 10,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                PokemonTypeText(pokemon.primaryType.name),
-                if (pokemon.secondaryType != null)
-                  PokemonTypeText(pokemon.secondaryType?.name ?? ""),
-              ],
-            ),
-          ),
-          Positioned(
-            top: 50,
-            left: 115,
-            child: Hero(
-              tag: pokemon.imageUrl,
-              child: CachedNetworkImage(
-                height: 70,
-                imageUrl: pokemon.imageUrl,
-              ),
-            ),
-          ),
-        ]),
+    );
+  }
+}
+
+class _PokeballDecoration extends StatelessWidget {
+  static const double _pokeballFraction = 0.75;
+
+  final double parentHeight;
+
+  const _PokeballDecoration({
+    Key? key,
+    required this.parentHeight,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final size = parentHeight * _pokeballFraction;
+
+    return Positioned(
+      bottom: -parentHeight * 0.13,
+      right: -parentHeight * 0.03,
+      child: SvgPicture.asset(
+        AppImages.pokeball.assetName,
+        height: size,
+        width: size,
+        color: Colors.white.withOpacity(0.14),
       ),
     );
   }

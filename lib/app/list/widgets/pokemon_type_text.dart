@@ -2,22 +2,25 @@ import 'package:flutter/material.dart';
 
 class PokemonTypeText extends StatelessWidget {
   final String text;
+  final double fontSize;
 
-  const PokemonTypeText(this.text);
+  const PokemonTypeText(this.text, {this.fontSize = 12});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 5),
-      padding: const EdgeInsets.only(left: 15, right: 15, top: 2, bottom: 2),
-      decoration: const BoxDecoration(
-        color: Color(0x4DFFFFFF),
-        borderRadius: BorderRadius.all(Radius.circular(50)),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.3),
+        borderRadius: const BorderRadius.all(Radius.circular(50)),
       ),
       child: Center(
         child: Text(
           text,
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(
+            fontSize: fontSize,
+            color: Colors.white,
+          ),
         ),
       ),
     );
