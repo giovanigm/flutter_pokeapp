@@ -11,7 +11,7 @@ class MainSliverAppBar extends SliverAppBar {
   );
 
   MainSliverAppBar({
-    String title = 'Pokedex',
+    String title = 'Pokédex',
     double height = kToolbarHeight + mainAppbarPadding * 2,
     double expandedFontSize = 30,
   }) : super(

@@ -66,12 +66,6 @@ class _PokemonPageViewState extends State<PokemonPageView> {
           itemCount: pokemons.length,
           onPageChanged: (index) {
             pokemonDetailsCubit.setPokemon(pokemons[index]);
-
-            // final thresholdReached = index >= pokemons.length - _endReachedThreshold;
-
-            // if (pokemonsState.canLoadMore && thresholdReached) {
-            //   pokemonsState.getPokemons();
-            // }
           },
           itemBuilder: (context, index) {
             final selected = currentPokemon?.id == index + 1;
@@ -83,8 +77,8 @@ class _PokemonPageViewState extends State<PokemonPageView> {
                 duration: const Duration(milliseconds: 600),
                 curve: Curves.easeOutQuint,
                 padding: EdgeInsets.only(
-                  top: selected ? 0 : screenSize.height * 0.04,
-                  bottom: selected ? 0 : screenSize.height * 0.04,
+                  top: selected ? 0 : screenSize.height * 0.05,
+                  bottom: selected ? 0 : screenSize.height * 0.05,
                 ),
                 child: CachedNetworkImage(
                   imageUrl: pokemons[index].imageUrl,

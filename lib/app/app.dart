@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/app/list/pokemon_list_cubit.dart';
-import 'package:pokeapp/app/list/pokemon_list_page.dart';
+import 'package:pokeapp/app/splash/splash_page.dart';
 
 import '../injection.dart';
 
@@ -13,12 +13,11 @@ class App extends StatelessWidget {
       child: MaterialApp(
           title: 'PokeApp',
           debugShowCheckedModeBanner: false,
-          home: PokemonListPage(),
+          home: const SplashPage(),
           theme: ThemeData(
             fontFamily: "CircularStd",
             brightness: Brightness.light,
-            primaryColor: Colors.red,
-            accentColor: Colors.red,
+            accentColor: Colors.white,
           )),
     );
   }

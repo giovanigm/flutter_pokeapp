@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pokeapp/app/core/fade_page_route.dart';
+import 'package:pokeapp/app/resources/app_images.dart';
 import 'package:pokeapp/app/widgets/main_app_bar.dart';
 import 'widgets/pokemon_list.dart';
 
 class PokemonListPage extends StatelessWidget {
+  static FadePageRoute route() => FadePageRoute(page: PokemonListPage());
+
   @override
   Widget build(BuildContext context) {
     final safeAreaTop = MediaQuery.of(context).padding.top;
@@ -26,7 +30,7 @@ class PokemonListPage extends StatelessWidget {
             top: pokeballTopMargin,
             right: pokeballRightMargin,
             child: SvgPicture.asset(
-              "assets/pokeball.svg",
+              AppImages.pokeball.assetName,
               width: pokeballSize,
               height: pokeballSize,
               color: Colors.black.withOpacity(0.05),

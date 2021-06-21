@@ -17,6 +17,7 @@ class PokemonListCubit extends Cubit<PokemonListState> {
         errorMessage: null,
       ));
     }
+
     final result = await _getAllPokemons();
 
     result.when(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pokeapp/app/core/extensions/pokemon_type_extensions.dart';
 import 'package:pokeapp/app/details/pokemon_details_page.dart';
+import 'package:pokeapp/app/resources/app_images.dart';
 
 import '../../../domain/constants/pokemon_type.dart';
 import '../../../domain/entities/pokemon.dart';
@@ -41,7 +42,7 @@ class PokemonListItem extends StatelessWidget {
             child: SizedBox(
               height: 150,
               child: SvgPicture.asset(
-                "assets/pokeball.svg",
+                AppImages.pokeball.assetName,
                 color: const Color(0x26FFFFFF),
               ),
             ),

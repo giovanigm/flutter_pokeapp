@@ -11,7 +11,7 @@ class PokemonInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -39,7 +39,6 @@ class PokemonInfo extends StatelessWidget {
                 Tab(text: "About"),
                 Tab(text: "Base Stats"),
                 Tab(text: "Evolution"),
-                Tab(text: "Moves"),
               ],
             ),
             const Expanded(
@@ -53,9 +52,6 @@ class PokemonInfo extends StatelessWidget {
                   ),
                   Center(
                     child: Text("Evolution"),
-                  ),
-                  Center(
-                    child: Text("Moves"),
                   ),
                 ],
               ),

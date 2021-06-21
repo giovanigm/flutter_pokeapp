@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokeapp/app/widgets/pokeball_loading.dart';
 
 import '../pokemon_list_cubit.dart';
 import '../pokemon_list_state.dart';
@@ -27,7 +28,7 @@ class _PokemonListState extends State<PokemonList> {
       builder: (context, state) {
         if (state.isLoading) {
           return const Center(
-            child: CircularProgressIndicator(),
+            child: PokeballLoading(),
           );
         }
 
