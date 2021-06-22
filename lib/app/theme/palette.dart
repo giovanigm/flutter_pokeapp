@@ -11,7 +11,7 @@ class Palette {
 
   static const Color dragonTypeColor = Color(0xFF62cad9);
 
-  static const Color electricTypeColor = Color(0xFFffd86f);
+  static const Color electricTypeColor = Color(0xFFFFCE4B);
 
   static const Color fairyTypeColor = Color(0xFFe91368);
 
