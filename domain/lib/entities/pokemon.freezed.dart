@@ -201,6 +201,7 @@ class __$PokemonCopyWithImpl<$Res> extends _$PokemonCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_Pokemon extends _Pokemon {
   const _$_Pokemon(
       {required this.id,

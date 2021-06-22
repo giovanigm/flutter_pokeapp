@@ -5,7 +5,7 @@ import '../../api/api.dart';
 import '../../model/pokemon_data.dart';
 
 abstract class PokemonRemoteDataSource {
-  Future<List<PokemonData>> getAllPokemons({int limit = 20, int offset});
+  Future<List<PokemonData>> getAllPokemons();
 }
 
 @LazySingleton(as: PokemonRemoteDataSource)
@@ -15,8 +15,7 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
   PokemonRemoteDataSourceImpl(this._apiClient);
 
   @override
-  Future<List<PokemonData>> getAllPokemons(
-      {int limit = 20, int offset = 0}) async {
+  Future<List<PokemonData>> getAllPokemons() async {
     final listResponse =
         await _apiClient.getAllPokemons(GetAllPokemonRequest());
 

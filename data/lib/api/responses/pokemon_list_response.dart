@@ -1,4 +1,4 @@
-import 'package:data/core/extensions/string_extensions.dart';
+import 'package:common/common.dart';
 import 'package:domain/constants/pokemon_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 

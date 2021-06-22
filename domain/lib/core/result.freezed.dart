@@ -107,6 +107,7 @@ class _$SuccessCopyWithImpl<T, $Res> extends _$ResultCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
+
 class _$Success<T> implements Success<T> {
   const _$Success({this.value});
 
@@ -219,6 +220,7 @@ class _$ErrorCopyWithImpl<T, $Res> extends _$ResultCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
+
 class _$Error<T> implements Error<T> {
   const _$Error({this.message});
 

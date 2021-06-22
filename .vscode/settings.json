@@ -5,13 +5,13 @@
     "**/.flutter-plugins-dependencies": true,
     "**/.idea": true,
     "**/.packages": true,
-    "**/*.freezed.dart": false,
+    "**/*.freezed.dart": true,
     "**/*.g.dart": true,
     "**/*.gr.dart": true,
     "**/*.iconfig.dart": true,
     "**/*.config.dart": true,
     "**/android/": true,
     "**/build/": true,
-    "**/ios/": true
+    "**/ios/": true,
   }
 }

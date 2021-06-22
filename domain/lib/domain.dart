@@ -1,4 +1,4 @@
 library domain;
 
-export 'repositories/repositories.dart';
-export 'usecases/usecases.dart';
+export 'repositories/pokemon_repository.dart';
+export 'usecases/get_all_pokemons.dart';

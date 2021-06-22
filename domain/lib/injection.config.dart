@@ -7,8 +7,8 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'repositories/pokemon/pokemon_repository.dart' as _i4;
-import 'usecases/pokemon/get_all_pokemons.dart'
+import 'repositories/pokemon_repository.dart' as _i4;
+import 'usecases/get_all_pokemons.dart'
     as _i3; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars

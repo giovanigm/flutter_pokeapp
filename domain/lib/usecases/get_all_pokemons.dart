@@ -1,8 +1,8 @@
 import 'package:injectable/injectable.dart';
 
-import '../../core/result.dart';
-import '../../entities/pokemon.dart';
-import '../../repositories/pokemon/pokemon_repository.dart';
+import '../core/result.dart';
+import '../entities/pokemon.dart';
+import '../repositories/pokemon_repository.dart';
 
 @injectable
 class GetAllPokemons {
