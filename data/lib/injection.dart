@@ -3,6 +3,9 @@ import 'package:injectable/injectable.dart';
 
 import 'injection.config.dart';
 
+final GetIt getIt = GetIt.instance;
+
 @injectableInit
-void configureDomainInjection(GetIt getIt, {required String environment}) =>
+Future<void> configureDataInjection(GetIt getIt,
+        {required String environment}) =>
     $initGetIt(getIt, environment: environment);

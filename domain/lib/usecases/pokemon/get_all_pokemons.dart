@@ -1,6 +1,6 @@
-import 'package:domain/core/result.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../core/result.dart';
 import '../../entities/pokemon.dart';
 import '../../repositories/pokemon/pokemon_repository.dart';
 

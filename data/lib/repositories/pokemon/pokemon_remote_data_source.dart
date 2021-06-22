@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:pokeapp/data/api/requests/get_all_pokemon_request.dart';
+import 'package:data/api/requests/get_all_pokemon_request.dart';
 
 import '../../api/api.dart';
 import '../../model/pokemon_data.dart';

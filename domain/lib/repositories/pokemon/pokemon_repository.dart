@@ -1,5 +1,4 @@
-import 'package:domain/core/result.dart';
-
+import '../../core/result.dart';
 import '../../entities/pokemon.dart';
 
 abstract class PokemonRepository {
