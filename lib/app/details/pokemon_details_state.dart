@@ -1,6 +1,5 @@
+import 'package:domain/entities/pokemon.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../domain/entities/pokemon.dart';
 
 part 'pokemon_details_state.freezed.dart';
 

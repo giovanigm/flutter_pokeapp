@@ -107,23 +107,15 @@ class _$SuccessCopyWithImpl<T, $Res> extends _$ResultCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
-class _$Success<T> with DiagnosticableTreeMixin implements Success<T> {
+class _$Success<T> implements Success<T> {
   const _$Success({this.value});
 
   @override
   final T? value;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Result<$T>.success(value: $value)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Result<$T>.success'))
-      ..add(DiagnosticsProperty('value', value));
   }
 
   @override
@@ -227,23 +219,15 @@ class _$ErrorCopyWithImpl<T, $Res> extends _$ResultCopyWithImpl<T, $Res>
 }
 
 /// @nodoc
-class _$Error<T> with DiagnosticableTreeMixin implements Error<T> {
+class _$Error<T> implements Error<T> {
   const _$Error({this.message});
 
   @override
   final String? message;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Result<$T>.error(message: $message)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Result<$T>.error'))
-      ..add(DiagnosticsProperty('message', message));
   }
 
   @override

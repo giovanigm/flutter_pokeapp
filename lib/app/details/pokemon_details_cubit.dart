@@ -1,7 +1,7 @@
+import 'package:domain/entities/pokemon.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pokeapp/app/details/pokemon_details_state.dart';
-import 'package:pokeapp/domain/entities/pokemon.dart';
 
 @injectable
 class PokemonDetailsCubit extends Cubit<PokemonDetailsState> {

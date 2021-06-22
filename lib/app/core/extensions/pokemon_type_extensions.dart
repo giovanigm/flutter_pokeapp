@@ -1,6 +1,6 @@
+import 'package:domain/constants/pokemon_type.dart';
 import 'package:flutter/material.dart';
 import 'package:pokeapp/app/theme/palette.dart';
-import 'package:pokeapp/domain/constants/pokemon_type.dart';
 
 extension PokemonTypePresentationX on PokemonType {
   Color get color {

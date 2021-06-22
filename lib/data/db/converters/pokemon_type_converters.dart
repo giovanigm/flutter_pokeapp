@@ -1,6 +1,5 @@
+import 'package:domain/constants/pokemon_type.dart';
 import 'package:floor/floor.dart';
-
-import '../../../domain/constants/pokemon_type.dart';
 
 class PokemonTypeConverter extends TypeConverter<PokemonType, String> {
   @override

@@ -1,3 +1,4 @@
+import 'package:domain/entities/pokemon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/app/core/extensions/pokemon_type_extensions.dart';
@@ -8,8 +9,6 @@ import 'package:pokeapp/app/details/widgets/pokemon_info.dart';
 import 'package:pokeapp/app/details/widgets/pokemon_page_view.dart';
 import 'package:pokeapp/injection.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-
-import '../../domain/entities/pokemon.dart';
 
 class PokemonDetailsPage extends StatefulWidget {
   final Pokemon pokemon;

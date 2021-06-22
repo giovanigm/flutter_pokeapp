@@ -5,7 +5,7 @@
     "**/.flutter-plugins-dependencies": true,
     "**/.idea": true,
     "**/.packages": true,
-    "**/*.freezed.dart": true,
+    "**/*.freezed.dart": false,
     "**/*.g.dart": true,
     "**/*.gr.dart": true,
     "**/*.iconfig.dart": true,

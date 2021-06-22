@@ -201,7 +201,7 @@ class __$PokemonCopyWithImpl<$Res> extends _$PokemonCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_Pokemon extends _Pokemon with DiagnosticableTreeMixin {
+class _$_Pokemon extends _Pokemon {
   const _$_Pokemon(
       {required this.id,
       required this.name,
@@ -231,23 +231,8 @@ class _$_Pokemon extends _Pokemon with DiagnosticableTreeMixin {
   final int weight;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Pokemon(id: $id, name: $name, imageUrl: $imageUrl, primaryType: $primaryType, secondaryType: $secondaryType, baseExperience: $baseExperience, height: $height, weight: $weight)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Pokemon'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('imageUrl', imageUrl))
-      ..add(DiagnosticsProperty('primaryType', primaryType))
-      ..add(DiagnosticsProperty('secondaryType', secondaryType))
-      ..add(DiagnosticsProperty('baseExperience', baseExperience))
-      ..add(DiagnosticsProperty('height', height))
-      ..add(DiagnosticsProperty('weight', weight));
   }
 
   @override

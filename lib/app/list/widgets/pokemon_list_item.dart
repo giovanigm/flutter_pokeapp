@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:domain/constants/pokemon_type.dart';
+import 'package:domain/entities/pokemon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pokeapp/app/core/extensions/pokemon_type_extensions.dart';
 import 'package:pokeapp/app/details/pokemon_details_page.dart';
 import 'package:pokeapp/app/resources/app_images.dart';
 
-import '../../../domain/constants/pokemon_type.dart';
-import '../../../domain/entities/pokemon.dart';
 import 'pokemon_type_text.dart';
 
 class PokemonListItem extends StatelessWidget {

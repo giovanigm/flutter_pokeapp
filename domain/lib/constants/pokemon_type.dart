@@ -1,4 +1,4 @@
-import '../../common/string_extensions.dart';
+import '../core/extensions/string_extensions.dart';
 
 enum PokemonType {
   bug,

@@ -1,7 +1,7 @@
+import 'package:domain/domain.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../domain/usecases/get_all_pokemons.dart';
 import 'pokemon_list_state.dart';
 
 @singleton

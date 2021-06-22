@@ -1,7 +1,6 @@
+import 'package:domain/constants/pokemon_type.dart';
+import 'package:domain/entities/pokemon.dart';
 import 'package:floor/floor.dart';
-
-import '../../domain/constants/pokemon_type.dart';
-import '../../domain/entities/pokemon.dart';
 
 @Entity(tableName: "Pokemons")
 class PokemonData {

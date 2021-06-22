@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:pokeapp/common/string_extensions.dart';
-import 'package:pokeapp/domain/constants/pokemon_type.dart';
+import 'package:domain/constants/pokemon_type.dart';
 
 import '../../model/pokemon_data.dart';
 

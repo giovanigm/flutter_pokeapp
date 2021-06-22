@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:domain/domain.dart';
+import 'package:domain/entities/pokemon.dart';
 import 'package:injectable/injectable.dart';
-import 'package:pokeapp/domain/core/result.dart';
+import 'package:domain/core/result.dart';
 
-import '../../../domain/entities/pokemon.dart';
-import '../../../domain/repositories/pokemon_repository.dart';
 import 'pokemon_local_data_source.dart';
 import 'pokemon_remote_data_source.dart';
 
