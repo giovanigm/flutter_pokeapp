@@ -155,9 +155,15 @@ class _DetailsHeaderState extends State<DetailsHeader>
             child: Row(
               children: <Widget>[
                 Wrap(spacing: 8, runSpacing: 8, children: [
-                  PokemonTypeText(pokemon?.primaryType.name ?? ""),
+                  PokemonTypeText(
+                    pokemon?.primaryType.name ?? "",
+                    fontSize: 16,
+                  ),
                   if (pokemon?.secondaryType != null)
-                    PokemonTypeText(pokemon?.secondaryType?.name ?? "")
+                    PokemonTypeText(
+                      pokemon?.secondaryType?.name ?? "",
+                      fontSize: 16,
+                    )
                 ]),
               ],
             ),
