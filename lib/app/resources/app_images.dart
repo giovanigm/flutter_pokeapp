@@ -10,11 +10,11 @@ class AppImages {
   const AppImages._();
 
   static const pokeball = AppAssetImage('pokeball.svg');
-  static const dotted = AppAssetImage('dotted.png');
+  static const dots = AppAssetImage('dots.png');
 
   static Future<void> precacheAssets(BuildContext context) async {
     await Future.wait([
-      precacheImage(dotted, context),
+      precacheImage(dots, context),
       precacheImage(pokeball, context),
     ]);
   }

@@ -1,6 +1,8 @@
+import 'package:domain/constants/pokemon_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokeapp/app/details/pokemon_details_cubit.dart';
+import 'package:pokeapp/app/list/widgets/pokemon_type_text.dart';
 import 'package:pokeapp/app/widgets/animated_fade.dart';
 import 'package:pokeapp/app/widgets/animated_slide.dart';
 
@@ -144,6 +146,21 @@ class _DetailsHeaderState extends State<DetailsHeader>
                 ),
               ),
             ],
+          ),
+        ),
+        AnimatedFade(
+          animation: fadeAnimation,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 26, right: 26, top: 5),
+            child: Row(
+              children: <Widget>[
+                Wrap(spacing: 8, runSpacing: 8, children: [
+                  PokemonTypeText(pokemon?.primaryType.name ?? ""),
+                  if (pokemon?.secondaryType != null)
+                    PokemonTypeText(pokemon?.secondaryType?.name ?? "")
+                ]),
+              ],
+            ),
           ),
         ),
         PokemonPageView(

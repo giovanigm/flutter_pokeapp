@@ -97,6 +97,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage>
             left: -screenSize.height * 0.055,
             child: const _DecorationBox(),
           ),
+          _DotsDecoration(fadeController: _sliderController),
           _RotatingPokeballDecoration(
             fadeController: _sliderController,
             rotationController: _rotateController,
@@ -229,6 +230,32 @@ class _RotatingPokeballDecoration extends StatelessWidget {
               color: Colors.white.withOpacity(0.26),
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _DotsDecoration extends StatelessWidget {
+  final AnimationController fadeController;
+
+  const _DotsDecoration({Key? key, required this.fadeController})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
+    return Positioned(
+      top: 4,
+      left: screenSize.height * 0.3,
+      child: AnimatedFade(
+        animation: Tween(begin: 1.0, end: 0.0).animate(fadeController),
+        child: Image(
+          image: AppImages.dots,
+          width: screenSize.height * 0.07,
+          height: screenSize.height * 0.07 * 0.54,
+          color: Colors.white.withOpacity(0.3),
         ),
       ),
     );
