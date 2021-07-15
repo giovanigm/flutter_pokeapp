@@ -3,6 +3,10 @@ import 'package:injectable/injectable.dart';
 
 import 'injection.config.dart';
 
+late final GetIt getIt;
+
 @injectableInit
-void configureDomainInjection(GetIt getIt, {required String environment}) =>
-    $initGetIt(getIt, environment: environment);
+void configureDomainInjection(GetIt mainGetIt, {required String environment}) {
+  $initGetIt(mainGetIt, environment: environment);
+  getIt = mainGetIt;
+}
