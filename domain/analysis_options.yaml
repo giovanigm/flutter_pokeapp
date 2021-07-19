@@ -6,6 +6,7 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.gr.dart"
     - "**/*.freezed.dart"
-# linter:
-#   rules:
-#     
+
+linter:
+  rules:
+    sort_pub_dependencies: false

@@ -1,12 +1,8 @@
+import 'package:data/data_sources/pokemon/pokemon_remote_data_source.dart';
+import 'package:data/model/pokemon_data.dart';
+import 'package:external/api/api.dart';
+import 'package:external/api/requests/get_all_pokemon_request.dart';
 import 'package:injectable/injectable.dart';
-import 'package:data/api/requests/get_all_pokemon_request.dart';
-
-import '../../api/api.dart';
-import '../../model/pokemon_data.dart';
-
-abstract class PokemonRemoteDataSource {
-  Future<List<PokemonData>> getAllPokemons();
-}
 
 @LazySingleton(as: PokemonRemoteDataSource)
 class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
@@ -19,8 +15,9 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
     final listResponse =
         await _apiClient.getAllPokemons(GetAllPokemonRequest());
 
-    final pokemonList =
-        listResponse.data.pokemon.map((item) => item.toPokemonData()).toList();
+    final pokemonList = listResponse.data.pokemon
+        .map((item) => item.toPokemonDTO().toData())
+        .toList();
 
     return pokemonList;
   }

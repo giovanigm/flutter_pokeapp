@@ -1,24 +1,31 @@
+import 'package:data/model/pokemon_data.dart';
 import 'package:domain/constants/pokemon_type.dart';
-import 'package:domain/entities/pokemon.dart';
+import 'package:floor/floor.dart';
 
-class PokemonData {
+@Entity(tableName: "Pokemons")
+class PokemonDTO {
+  @primaryKey
   final int id;
 
   final String name;
 
+  @ColumnInfo(name: "image_url")
   final String imageUrl;
 
+  @ColumnInfo(name: "base_experience")
   int baseExperience;
 
   int height;
 
   int weight;
 
+  @ColumnInfo(name: "primary_type")
   PokemonType primaryType;
 
+  @ColumnInfo(name: "secondary_type")
   PokemonType? secondaryType;
 
-  PokemonData({
+  PokemonDTO({
     required this.id,
     required this.name,
     required this.imageUrl,
@@ -29,7 +36,7 @@ class PokemonData {
     required this.secondaryType,
   });
 
-  Pokemon toEntity() => Pokemon(
+  PokemonData toData() => PokemonData(
         id: id,
         name: name,
         imageUrl: imageUrl,
@@ -40,14 +47,14 @@ class PokemonData {
         secondaryType: secondaryType,
       );
 
-  factory PokemonData.fromEntity(Pokemon entity) => PokemonData(
-        id: entity.id,
-        name: entity.name,
-        imageUrl: entity.imageUrl,
-        baseExperience: entity.baseExperience,
-        height: entity.height,
-        weight: entity.weight,
-        primaryType: entity.primaryType,
-        secondaryType: entity.secondaryType,
+  factory PokemonDTO.fromData(PokemonData data) => PokemonDTO(
+        id: data.id,
+        name: data.name,
+        imageUrl: data.imageUrl,
+        baseExperience: data.baseExperience,
+        height: data.height,
+        weight: data.weight,
+        primaryType: data.primaryType,
+        secondaryType: data.secondaryType,
       );
 }

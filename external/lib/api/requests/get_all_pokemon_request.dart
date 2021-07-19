@@ -1,4 +1,4 @@
-import 'package:data/api/requests/request.dart';
+import 'package:external/api/requests/request.dart';
 
 class GetAllPokemonRequest extends Request {
   GetAllPokemonRequest()

@@ -2,7 +2,7 @@ import 'package:common/common.dart';
 import 'package:domain/constants/pokemon_type.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../model/pokemon_data.dart';
+import '../../model/pokemon_dto.dart';
 
 part 'pokemon_list_response.g.dart';
 
@@ -44,14 +44,14 @@ class _PokemonItem {
   _PokemonItem(this.id, this.height, this.weight, this.baseExperience,
       this.species, this.types);
 
-  PokemonData toPokemonData() {
+  PokemonDTO toPokemonDTO() {
     final primaryType = PokemonTypeX.fromValue(types[0].type.name);
     PokemonType? secondaryType;
     if (types.length == 2) {
       secondaryType = PokemonTypeX.fromValue(types[1].type.name);
     }
 
-    return PokemonData(
+    return PokemonDTO(
       id: id,
       name: species.name.capitalize(),
       imageUrl:

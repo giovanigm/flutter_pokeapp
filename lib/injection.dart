@@ -9,7 +9,7 @@ final GetIt getIt = GetIt.instance;
 
 @injectableInit
 Future<void> configureInjection(String env) async {
-  await configureDataInjection(getIt, environment: env);
+  configureDataInjection(getIt, environment: env);
   configureDomainInjection(getIt, environment: env);
   $initGetIt(getIt, environment: env);
 }

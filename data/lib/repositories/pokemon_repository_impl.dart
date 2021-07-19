@@ -1,11 +1,9 @@
-import 'package:dio/dio.dart';
+import 'package:data/data_sources/pokemon/pokemon_local_data_source.dart';
+import 'package:data/data_sources/pokemon/pokemon_remote_data_source.dart';
 import 'package:domain/domain.dart';
 import 'package:domain/entities/pokemon.dart';
 import 'package:injectable/injectable.dart';
 import 'package:domain/core/result.dart';
-
-import 'pokemon_local_data_source.dart';
-import 'pokemon_remote_data_source.dart';
 
 @LazySingleton(as: PokemonRepository)
 class PokemonRepositoryImpl implements PokemonRepository {
@@ -32,12 +30,6 @@ class PokemonRepositoryImpl implements PokemonRepository {
         return Result.success(value: entities);
       }
     } catch (error) {
-      switch (error.runtimeType) {
-        case DioError:
-          // final res = (error as DioError).response;
-          break;
-        default:
-      }
       return const Result.error();
     }
   }

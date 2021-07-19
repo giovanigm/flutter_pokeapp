@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:data/api/requests/get_all_pokemon_request.dart';
+import 'package:external/api/requests/get_all_pokemon_request.dart';
 import 'package:retrofit/retrofit.dart';
 
 import 'responses/pokemon_list_response.dart';

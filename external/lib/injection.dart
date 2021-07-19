@@ -6,10 +6,10 @@ import 'injection.config.dart';
 late final GetIt getIt;
 
 @injectableInit
-void configureDataInjection(
+Future<void> configureDataInjection(
   GetIt mainGetIt, {
   required String environment,
-}) {
-  $initGetIt(mainGetIt, environment: environment);
+}) async {
+  await $initGetIt(mainGetIt, environment: environment);
   getIt = mainGetIt;
 }
