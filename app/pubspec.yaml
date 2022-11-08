@@ -1,0 +1,48 @@
+name: app
+description: A new Flutter project.
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get_it: ^7.2.0
+
+  shared:
+    path: ../shared
+
+  # Features
+
+  splash:
+    path: ../features/splash
+  
+  pokemon_list:
+    path: ../features/pokemon_list
+
+  pokemon_details:
+    path: ../features/pokemon_details
+
+
+  # Libraries
+
+  design_system:
+    path: ../libraries/design_system
+
+  navigation:
+    path: ../libraries/navigation
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+
+flutter:
+  uses-material-design: true

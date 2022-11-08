@@ -1,17 +1,35 @@
 {
-  "files.exclude": {
-    "**/.dart_tool": true,
-    "**/.flutter-plugins": true,
-    "**/.flutter-plugins-dependencies": true,
-    "**/.idea": true,
-    "**/.packages": true,
-    "**/*.freezed.dart": true,
-    "**/*.g.dart": true,
-    "**/*.gr.dart": true,
-    "**/*.iconfig.dart": true,
-    "**/*.config.dart": true,
-    "**/android/": true,
-    "**/build/": true,
-    "**/ios/": true,
-  }
+    "files.exclude": {
+        "**/android": true,
+        "**/ios": true,
+        "**/.idea": true,
+        "**/.dart_tool": true,
+        "**/*.iml": true,
+        "**/.metadata": true,
+        "**/.packages": true,
+        "**/build": true,
+        "**/.flutter-plugins": true,
+        "**/.flutter-plugins-dependencies": true,
+        "**/*.g.dart": true,
+        "**/*.config.dart": true,
+        "**/*.gr.dart": true,
+        "**/*.mocks.dart": true,
+    },
+    "editor.formatOnSave": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "editor.linkedEditing": true,
+    "[dart]": {
+        "editor.foldingImportsByDefault": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+            "source.fixAll": true,
+        },
+    },
+    "dart.flutterSdkPaths": [
+        "/usr/local/opt/.asdf/installs/flutter/2.10.5-stable",
+        "/usr/local/opt/.asdf/installs/flutter/3.0.1-stable",
+        "/usr/local/opt/.asdf/installs/flutter/3.3.7-stable"
+    ],
+    "dart.flutterSdkPath": "/usr/local/opt/.asdf/installs/flutter/3.3.7-stable"
 }

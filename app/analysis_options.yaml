@@ -1,0 +1,16 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - "**/*.mocks.dart"
+    - "**/*.g.dart"
+
+linter:
+  rules:
+    prefer_relative_imports: true
+    always_use_package_imports: false
+    sort_pub_dependencies: false
+    use_build_context_synchronously: false
+    avoid_dynamic_calls: false
+    body_might_complete_normally_nullable: false
+    library_private_types_in_public_api: false
